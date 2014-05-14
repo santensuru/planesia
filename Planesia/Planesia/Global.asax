@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Planesia.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Planesia.MvcApplication" Language="C#" %>
