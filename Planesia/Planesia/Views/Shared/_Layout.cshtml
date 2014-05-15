@@ -2,16 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Planesia</title>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Planesia</p>
-        </footer>
-    </div>
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Planesia</p>
+    </footer>
 </body>
 </html>
