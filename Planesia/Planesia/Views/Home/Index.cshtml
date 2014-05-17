@@ -4,14 +4,13 @@
 
 <html>
 <head>
-    <script type="text/JavaScript" src="index.js">
-    </script>
-    <title> Indonesia Plant Society </title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <title> Planesia - Maps </title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
+
     <style>
-        html, body, #map-canvas {
+        html, body, #map-canvas
+        {
             height: 90%;
             margin-left: 20px;
             margin-right: 20px;
@@ -20,37 +19,29 @@
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
     <script>
         var map;
-        function initialize() {
+        function initialize()
+        {
             var anggrek = new google.maps.LatLng(0.296953, 114.586458);
             var rafflesia = new google.maps.LatLng(0, 102);
-            var mapOptions = {
+            var mapOptions =
+            {
                 zoom: 5,
                 center: new google.maps.LatLng(-1, +118.75083)
             };
 
             var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-            var contentString = '<div id="content">' +
-          '<div id="siteNotice">' +
-          '</div>' +
-          '<h1 id="firstHeading" class="firstHeading">Anggrek Bulan</h1>' +
-          '<div id="bodyContent">' +
-          ' <img height="45" weight="45" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Phalaenopsis_amabilis_Orchi_03.jpg/800px-Phalaenopsis_amabilis_Orchi_03.jpg"> ' +
-          '<p><b>Anggrek Bulan</b>, Phalaenopsis amabilis, commonly known as the month orchid is a species of orchid. ' +
-          ' <a href = "http://en.wikipedia.org/wiki/Phalaenopsis_amabilis"> wikipedia</a> ' +
-          '</div>' +
-          '</div>';
-
             var rafflesiaex = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
             '<h1 id="firstHeading" class="firstHeading">Rafflesia</h1>' +
             '<div id="bodyContent">' +
-            ' <img height="45" weight="45" src="http://www.parasiticplants.siu.edu/Rafflesiaceae/images/RafflesiaArnFlw3.jpg"> ' +
+            '<img height="45" weight="45" src="http://www.parasiticplants.siu.edu/Rafflesiaceae/images/RafflesiaArnFlw3.jpg"> ' +
             '<p><b>Anggrek Bulan</b>, Rafflesia is a genus of parasitic flowering plants. It contains approximately 28 species, all found in southeastern Asia, on Indonesia, Malay Peninsula, Borneo, Sumatra, Thailand and the Philippines. ' +
-            ' <a href = "http://en.wikipedia.org/wiki/Rafflesia"> wikipedia</a> ' +
+            '<a href = "http://en.wikipedia.org/wiki/Rafflesia"> wikipedia</a> ' +
             '</div>' +
             '</div>';
 
@@ -63,7 +54,6 @@
                 strokeColor: 'green',
                 strokeWeight: 1
             };
-
 
             var infowindowd = new google.maps.InfoWindow
             ({
@@ -78,33 +68,13 @@
                 title: 'Rafflesia'
             });
 
-            google.maps.event.addListener(markerx, 'click', function () {
+            google.maps.event.addListener(markerx, 'click', function ()
+            {
                 infowindowd.open(map, markerx);
             });
 
-
-            var infowindow = new google.maps.InfoWindow
-            ({
-                content: contentString
-            });
-
-            var marker = new google.maps.Marker
-            ({
-                position: anggrek,
-                map: map,
-                icon: bintang,
-                title: 'Anggrek Bulan'
-            });
-
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
-
         }
-
         google.maps.event.addDomListener(window, 'load', initialize);
-
     </script>
 </head>
 
