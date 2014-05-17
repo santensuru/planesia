@@ -17,5 +17,20 @@ namespace Planesia.Controllers
         {
             return View();
         }
+
+        public ActionResult Categories()
+        {
+            return View();
+        }
+
+        public ActionResult Signup()
+        {
+            return View();
+        }
+
+        public ActionResult Signin()
+        {
+            return View();
+        }
     }
 }
