@@ -16,7 +16,6 @@ namespace Planesia.Models
     {
         public int userId { get; set; }
         public string userName { get; set; }
-        public string userUsername { get; set; }
         public string userPassword { get; set; }
         public byte[] userPhoto { get; set; }
         public string userPhone { get; set; }

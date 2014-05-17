@@ -7,7 +7,7 @@
     <title> Planesia - Maps </title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
-
+    <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" type="text/css" />
     <style>
         html, body, #map-canvas
         {
@@ -79,11 +79,32 @@
 </head>
 
 <body>
-    @*<div id="map-canvas"></div>*@
-    <div id="menu" style="background-color:#FFD700;height:100%;width:20%;float:left;">
-        
+    <div id="menu">
+        <div id="filter-maps">Filter Maps</div>
+        <div id="filter-menu">
+            <form>
+                <input type="checkbox" name="vehicle" value="Bike">Flora
+                <input type="checkbox" name="vehicle" value="Bike">Fauna
+                <br>
+                <input type="checkbox" name="vehicle" value="Car">Extinct
+                <br>
+                <input type="checkbox" name="vehicle" value="Car">Endangered
+                <br>
+                <input type="checkbox" name="vehicle" value="Car">Safe
+            </form>
+        </div>
+        <br>
+        <input type="search">
+        <br>
+        <br>
+        <div id="login-menu">
+            <form>
+                <input type="email">Flora
+            </form>
+        </div>
     </div>
 
-    <div id="map-canvas" height:100%; width:80%;"></div>
+    <div id="map-canvas"></div>
 </body>
+
 </html>

@@ -46,7 +46,6 @@
           </Key>
           <Property Name="adminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="adminName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="adminUsername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adminPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adminPhoto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="adminPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
@@ -59,7 +58,6 @@
           </Key>
           <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="userUsername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userPhoto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="userPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
@@ -81,7 +79,6 @@
               <MappingFragment StoreEntitySet="adminDBs">
                 <ScalarProperty Name="adminId" ColumnName="adminId" />
                 <ScalarProperty Name="adminName" ColumnName="adminName" />
-                <ScalarProperty Name="adminUsername" ColumnName="adminUsername" />
                 <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
                 <ScalarProperty Name="adminPhoto" ColumnName="adminPhoto" />
                 <ScalarProperty Name="adminPhone" ColumnName="adminPhone" />
@@ -95,7 +92,6 @@
               <MappingFragment StoreEntitySet="userDBs">
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="userUsername" ColumnName="userUsername" />
                 <ScalarProperty Name="userPassword" ColumnName="userPassword" />
                 <ScalarProperty Name="userPhoto" ColumnName="userPhoto" />
                 <ScalarProperty Name="userPhone" ColumnName="userPhone" />
