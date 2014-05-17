@@ -7,21 +7,34 @@
 </head>
 
 <body>
+    <div align="right">
+        <a href="FAQ.html" class="navigation">FAQ</a> @*Link to Frequently Asked Question Page*@
+        <a href="help.html" class="navigation">Help</a> @*Link to Help Page*@
+    </div>
+    <form id="tfnewsearch" method="get">
+        <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
+        <input type="submit" value="search" class="tfbutton">
+    </form>
+    <div class="tfclear"></div>
+    <div>
+        <nav class="nav" align="center">
+            <a href="maps.html" class="navigation">Maps</a>
+            <a href="categories.html" class="navigation">Categories</a>
+            <a href="fun-edu-game.html" class="navigation">Fun Edu-Game</a>
+            <a href="campaign.html" class="navigation">Campaign</a>
+            <a href="unique.html" class="navigation">Unique</a>
+            <a href="news.html" class="navigation">News</a>
+        </nav>
+    </div>
+        @RenderBody()
     <nav class="nav" align="center">
-        <a href="index.html" class="navigation">Maps</a>
-        <a href="sitemap.html" class="navigation">Categories</a>
-        <a href="project.html" class="navigation">Fun Edu-Game</a>
-        <a href="download.html" class="navigation">Campaign</a>
-        <a href="download.html" class="navigation">Unique</a>
-        <a href="download.html" class="navigation">News</a>
+        <a href="about.html" class="navigation">About</a>@*Link to About Page*@
+        <a href="sitemap.html" class="navigation">Sitemap</a> @*Link to Sitemap Page*@
+        <a href="projects.html" class="navigation">Projects</a> @*Link to Projects Page*@
+        <a href="download.html" class="navigation">Download</a> @*Link to Download Resources (Poster, etc) Page*@
     </nav>
-    @RenderBody()
-    <nav class="nav" align="center">
-        <a href="index.html" class="navigation">About</a>
-        <a href="sitemap.html" class="navigation">Sitemap</a>
-        <a href="project.html" class="navigation">Projects</a>
-        <a href="download.html" class="navigation">Download</a>
-    </nav>
+
+
     <footer>
         <p>&copy; @DateTime.Now.Year - Planesia</p>
     </footer>
