@@ -32,5 +32,10 @@ namespace Planesia.Controllers
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
