@@ -23,6 +23,26 @@ namespace Planesia.Controllers
             return View();
         }
 
+        public ActionResult Funedugame()
+        {
+            return View();
+        }
+
+        public ActionResult Unique()
+        {
+            return View();
+        }
+
+        public ActionResult Campaign()
+        {
+            return View();
+        }
+
+        public ActionResult News()
+        {
+            return View();
+        }
+
         public ActionResult Signup()
         {
             return View();
