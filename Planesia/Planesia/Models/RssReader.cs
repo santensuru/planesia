@@ -12,16 +12,28 @@ namespace Planesia.Models
         private static string _blogURL = "http://www.fauna-flora.org/news/feed/";
         public static IEnumerable<Rss> GetRssFeed()
         {
-            XDocument feedXml = XDocument.Load(_blogURL);
-            string pattern = @"<[^>]*?>";
-            var feeds = from feed in feedXml.Descendants("item")
-                        select new Rss
-                        {
-                            Title = feed.Element("title").Value,
-                            Link = feed.Element("link").Value,
-                            Description = Regex.Replace(Regex.Match(feed.Element("description").Value, @"^.{1,180}\b(?<!\s)").Value, pattern, "")
-                        };
-            return feeds;
+            try
+            {
+                XDocument feedXml = XDocument.Load(_blogURL);
+                string pattern = @"<[^>]*?>";
+                var feeds = from feed in feedXml.Descendants("item")
+                            select new Rss
+                            {
+                                Title = feed.Element("title").Value,
+                                Link = feed.Element("link").Value,
+                                Description = Regex.Replace(Regex.Match(feed.Element("description").Value, @"^.{1,180}\b(?<!\s)").Value, pattern, "")
+                            };
+                return feeds;
+            }
+            catch (Exception e)
+            {
+                Rss error = new Rss();
+                error.Link = e.Message.ToString();
+                error.Title = "Your Connection Time Out";
+                error.Description = "Please to check/reconnect your connection";
+                throw;
+            }
+            
         }
     }
 }

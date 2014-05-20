@@ -61,11 +61,13 @@
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.dll</HintPath>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -198,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Pagination.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +222,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PlanesiaDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Rss.cs" />
+    <Compile Include="Models\RssReader.cs" />
     <Compile Include="Models\userDB.cs">
       <DependentUpon>PlanesiaDB.tt</DependentUpon>
     </Compile>
@@ -234,6 +239,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Categories.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\News.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

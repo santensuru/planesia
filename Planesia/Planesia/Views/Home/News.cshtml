@@ -3,6 +3,8 @@
 
 
     <link href="@Url.Content("~/Content/News.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+    @*bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css", "~/Content/PagedList.css"))*@
 
 @{
     ViewBag.Title = "News";
@@ -36,12 +38,13 @@
             }
 
         </table>
-
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+    <div id="pagination">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 
         @Html.PagedListPager(Model, page => Url.Action("News",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
 
 
         @*<div id="tablePagination">

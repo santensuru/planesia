@@ -1,16 +1,12 @@
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 20px auto;
   border-radius: 4px;
-
-  //list-style-type:none;
 }
 
 .pagination > li {
   display: inline;
-  //float:left;
-  //list-style-type:none;
 }
 
 .pagination > li > a,

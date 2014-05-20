@@ -23,3 +23,7 @@ table a:hover {
     color: grey;
     text-decoration: none;
 }
+
+#pagination {
+    text-align: center;
+}
