@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Planesia.Controllers
 {
@@ -38,9 +40,12 @@ namespace Planesia.Controllers
             return View();
         }
 
-        public ActionResult News()
+        public ActionResult News(int? page)
         {
-            return View();
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(Planesia.Models.RssReader.GetRssFeed().ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Signup()
