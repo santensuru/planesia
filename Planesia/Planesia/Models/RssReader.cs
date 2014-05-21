@@ -28,10 +28,16 @@ namespace Planesia.Models
             catch (Exception e)
             {
                 Rss error = new Rss();
-                error.Link = e.Message.ToString();
+                error.Link = "";
                 error.Title = "Your Connection Time Out";
-                error.Description = "Please to check/reconnect your connection";
-                throw;
+                error.Description = "Please to check/reconnect your connection\n";
+                error.Description += e.Message.ToString();
+
+                var feeds = new List<Rss>();
+                feeds.Add(error);
+
+                return feeds;
+                //throw;
             }
             
         }
