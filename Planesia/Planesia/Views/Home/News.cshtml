@@ -1,74 +1,40 @@
 ﻿@model PagedList.IPagedList<Planesia.Models.Rss>
 @using PagedList.Mvc;
 
-
-    <link href="@Url.Content("~/Content/News.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
-    @*bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css", "~/Content/PagedList.css"))*@
-
 @{
     ViewBag.Title = "News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>News</h2>
+@*<h2>News</h2>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+    <table>
 
-    <div id="testTable">
-        <table id="menuTable">
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th>
-                        <a href="@item.Link" target="_blank">@Html.Encode(item.Title)</a>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            @System.Web.HttpUtility.HtmlDecode(item.Description)<br>
+    @foreach (var item in Model)
+        {
+        
+            <tr>
+                <th>
+                    <a href="@item.Link" target="_blank">@Html.Encode(item.Title)</a>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        @System.Web.HttpUtility.HtmlDecode(item.Description)<br>
                         <a href="@item.Link" target="_blank">Read More ...</a>
                     </p>
                 </td>
             </tr>
-            }
+        }
 
-        </table>
-    </div>
-    <div id="pagination">
-        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+    </table>
+    <div class="pager">
+    @Html.PagedListPager(Model, page => Url.Action("News",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
 
-        @Html.PagedListPager(Model, page => Url.Action("News",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-    </div>
-
-
-        @*<div id="tablePagination">
-            <span id="tablePagination_perPage">
-                <select id="tablePagination_rowPerPage">
-                    <option value="5" selected="">5</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                </select>
-                per page
-            </span>
-            <span id="tablePagination_paginater">
-                <img id="tablePagination_firstPage" src="./images/first.gif"></img>
-                <img id="tablePagination_prevPage" src="./images/prev.gif"></img>
-
-                Page
-
-                <input id="tablePagination_currPage" type="input" size="1" value="1"></input>
-
-                of
-
-                <span id="tablePagination_totalPages"></span>
-                <img id="tablePagination_nextPage" src="./images/next.gif"></img>
-                <img id="tablePagination_lastPage" src="./images/last.gif"></img>
-            </span>
-
-        </div>*@
+            
