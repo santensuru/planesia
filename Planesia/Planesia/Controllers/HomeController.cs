@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using Planesia.Models;
 
 namespace Planesia.Controllers
 {
@@ -31,11 +32,6 @@ namespace Planesia.Controllers
         }
 
         public ActionResult Unique()
-        {
-            return View();
-        }
-
-        public ActionResult Campaign()
         {
             return View();
         }

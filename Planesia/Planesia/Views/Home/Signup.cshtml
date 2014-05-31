@@ -1,0 +1,74 @@
+﻿@model Planesia.Models.userDB
+
+@{
+    ViewBag.Title = "Sign up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div>
+        <h4>Sign Up</h4>
+        <hr/>
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.Label("Name")
+            <div>
+                @Html.EditorFor(model => model.userName)
+                @Html.ValidationMessageFor(model => model.userName)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.userPassword)
+            <div>
+                @Html.EditorFor(model => model.userPassword)
+                @Html.ValidationMessageFor(model => model.userPassword)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.userPhoto)
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userPhoto)
+                @Html.ValidationMessageFor(model => model.userPhoto)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.userPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userPhone)
+                @Html.ValidationMessageFor(model => model.userPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.userEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userEmail)
+                @Html.ValidationMessageFor(model => model.userEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.userCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userCity)
+                @Html.ValidationMessageFor(model => model.userCity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

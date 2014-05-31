@@ -201,31 +201,41 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Pagination.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\adminDB.cs">
-      <DependentUpon>PlanesiaDB.tt</DependentUpon>
+    <Compile Include="Models\Campaign.cs">
+      <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PlanesiaDB.Context.cs">
+    <Compile Include="Models\Distribution.cs">
+      <DependentUpon>Planesia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fauna.cs">
+      <DependentUpon>Planesia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flora.cs">
+      <DependentUpon>Planesia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Planesia.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PlanesiaDB.Context.tt</DependentUpon>
+      <DependentUpon>Planesia.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PlanesiaDB.cs">
+    <Compile Include="Models\Planesia.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PlanesiaDB.tt</DependentUpon>
+      <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PlanesiaDB.Designer.cs">
+    <Compile Include="Models\Planesia.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PlanesiaDB.edmx</DependentUpon>
+      <DependentUpon>Planesia.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Rss.cs" />
     <Compile Include="Models\RssReader.cs" />
-    <Compile Include="Models\userDB.cs">
-      <DependentUpon>PlanesiaDB.tt</DependentUpon>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -237,33 +247,29 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Categories.css" />
-    <Content Include="Content\Index.css" />
-    <Content Include="Content\News.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\PlanesiaDB.edmx">
+    <EntityDeploy Include="Models\Planesia.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PlanesiaDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Planesia.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PlanesiaDB.Context.tt">
+    <Content Include="Models\Planesia.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PlanesiaDB.edmx</DependentUpon>
-      <LastGenOutput>PlanesiaDB.Context.cs</LastGenOutput>
+      <DependentUpon>Planesia.edmx</DependentUpon>
+      <LastGenOutput>Planesia.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PlanesiaDB.edmx.diagram">
-      <DependentUpon>PlanesiaDB.edmx</DependentUpon>
+    <Content Include="Models\Planesia.edmx.diagram">
+      <DependentUpon>Planesia.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\PlanesiaDB.tt">
+    <Content Include="Models\Planesia.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PlanesiaDB.edmx</DependentUpon>
-      <LastGenOutput>PlanesiaDB.cs</LastGenOutput>
+      <DependentUpon>Planesia.edmx</DependentUpon>
+      <LastGenOutput>Planesia.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -299,6 +305,12 @@
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Campaign.cshtml" />
     <Content Include="Views\Home\Funedugame.cshtml" />
+    <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

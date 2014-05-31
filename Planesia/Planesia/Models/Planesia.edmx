@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PlanesiaDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Name="CampaignId" Type="int" Nullable="false" />
+          <Property Name="CampaignName" Type="varchar" MaxLength="50" />
+          <Property Name="CampaignDescription" Type="varchar" MaxLength="50" />
+          <Property Name="CampaignDate" Type="date" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CampaignStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Distribution">
+          <Key>
+            <PropertyRef Name="DistributionArea" />
+          </Key>
+          <Property Name="DistributionArea" Type="int" Nullable="false" />
+          <Property Name="DistributionLongitude" Type="float" />
+          <Property Name="DistributionLatitude" Type="float" />
+        </EntityType>
+        <EntityType Name="Fauna">
+          <Key>
+            <PropertyRef Name="FaunaId" />
+          </Key>
+          <Property Name="FaunaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaunaName" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaLatinName" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaDate" Type="date" />
+          <Property Name="FaunaDistribution" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaDiscoverer" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaPhoto" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="FaunaStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Flora">
+          <Key>
+            <PropertyRef Name="FloraId" />
+          </Key>
+          <Property Name="FloraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FloraName" Type="varchar" MaxLength="50" />
+          <Property Name="FloraLatinName" Type="varchar" MaxLength="50" />
+          <Property Name="FloraDate" Type="date" />
+          <Property Name="FloraDistribution" Type="varchar" MaxLength="50" />
+          <Property Name="FloraDiscoverer" Type="varchar" MaxLength="50" />
+          <Property Name="FloraOtherDescription" Type="varchar" MaxLength="50" />
+          <Property Name="FloraPhoto" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="FloraStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CampaignUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaunaUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Fauna" Type="Self.Fauna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fauna">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FloraUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Flora" Type="Self.Flora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Flora">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlanesiaDBsModelStoreContainer">
+          <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distribution" EntityType="Self.Distribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fauna" EntityType="Self.Fauna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flora" EntityType="Self.Flora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CampaignUser" Association="Self.FK_CampaignUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Campaign" EntitySet="Campaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaunaUser" Association="Self.FK_FaunaUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Fauna" EntitySet="Fauna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FloraUser" Association="Self.FK_FloraUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Flora" EntitySet="Flora" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlanesiaDBsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Name="CampaignId" Type="Int32" Nullable="false" />
+          <Property Name="CampaignName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignDate" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CampaignStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CampaignUser" FromRole="Campaign" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Distribution">
+          <Key>
+            <PropertyRef Name="DistributionArea" />
+          </Key>
+          <Property Name="DistributionArea" Type="Int32" Nullable="false" />
+          <Property Name="DistributionLongitude" Type="Double" />
+          <Property Name="DistributionLatitude" Type="Double" />
+        </EntityType>
+        <EntityType Name="Fauna">
+          <Key>
+            <PropertyRef Name="FaunaId" />
+          </Key>
+          <Property Name="FaunaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaunaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaDate" Type="DateTime" Precision="0" />
+          <Property Name="FaunaDistribution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FaunaStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FaunaUser" FromRole="Fauna" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Flora">
+          <Key>
+            <PropertyRef Name="FloraId" />
+          </Key>
+          <Property Name="FloraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FloraName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraDate" Type="DateTime" Precision="0" />
+          <Property Name="FloraDistribution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FloraStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Campaigns" Relationship="Self.FK_CampaignUser" FromRole="User" ToRole="Campaign" />
+          <NavigationProperty Name="Faunas" Relationship="Self.FK_FaunaUser" FromRole="User" ToRole="Fauna" />
+          <NavigationProperty Name="Floras" Relationship="Self.FK_FloraUser" FromRole="User" ToRole="Flora" />
+        </EntityType>
+        <Association Name="FK_CampaignUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaunaUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Fauna" Type="Self.Fauna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fauna">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FloraUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Flora" Type="Self.Flora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Flora">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlanesiaDBsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Campaigns" EntityType="Self.Campaign" />
+          <EntitySet Name="Distributions" EntityType="Self.Distribution" />
+          <EntitySet Name="Faunas" EntityType="Self.Fauna" />
+          <EntitySet Name="Floras" EntityType="Self.Flora" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_CampaignUser" Association="Self.FK_CampaignUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaunaUser" Association="Self.FK_FaunaUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Fauna" EntitySet="Faunas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FloraUser" Association="Self.FK_FloraUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Flora" EntitySet="Floras" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlanesiaDBsModelStoreContainer" CdmEntityContainer="PlanesiaDBsEntities">
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="PlanesiaDBsModel.Campaign">
+              <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="CampaignDescription" ColumnName="CampaignDescription" />
+                <ScalarProperty Name="CampaignDate" ColumnName="CampaignDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CampaignStatus" ColumnName="CampaignStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributions">
+            <EntityTypeMapping TypeName="PlanesiaDBsModel.Distribution">
+              <MappingFragment StoreEntitySet="Distribution">
+                <ScalarProperty Name="DistributionArea" ColumnName="DistributionArea" />
+                <ScalarProperty Name="DistributionLongitude" ColumnName="DistributionLongitude" />
+                <ScalarProperty Name="DistributionLatitude" ColumnName="DistributionLatitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faunas">
+            <EntityTypeMapping TypeName="PlanesiaDBsModel.Fauna">
+              <MappingFragment StoreEntitySet="Fauna">
+                <ScalarProperty Name="FaunaId" ColumnName="FaunaId" />
+                <ScalarProperty Name="FaunaName" ColumnName="FaunaName" />
+                <ScalarProperty Name="FaunaLatinName" ColumnName="FaunaLatinName" />
+                <ScalarProperty Name="FaunaDate" ColumnName="FaunaDate" />
+                <ScalarProperty Name="FaunaDistribution" ColumnName="FaunaDistribution" />
+                <ScalarProperty Name="FaunaDiscoverer" ColumnName="FaunaDiscoverer" />
+                <ScalarProperty Name="FaunaOtherDescription" ColumnName="FaunaOtherDescription" />
+                <ScalarProperty Name="FaunaPhoto" ColumnName="FaunaPhoto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FaunaStatus" ColumnName="FaunaStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Floras">
+            <EntityTypeMapping TypeName="PlanesiaDBsModel.Flora">
+              <MappingFragment StoreEntitySet="Flora">
+                <ScalarProperty Name="FloraId" ColumnName="FloraId" />
+                <ScalarProperty Name="FloraName" ColumnName="FloraName" />
+                <ScalarProperty Name="FloraLatinName" ColumnName="FloraLatinName" />
+                <ScalarProperty Name="FloraDate" ColumnName="FloraDate" />
+                <ScalarProperty Name="FloraDistribution" ColumnName="FloraDistribution" />
+                <ScalarProperty Name="FloraDiscoverer" ColumnName="FloraDiscoverer" />
+                <ScalarProperty Name="FloraOtherDescription" ColumnName="FloraOtherDescription" />
+                <ScalarProperty Name="FloraPhoto" ColumnName="FloraPhoto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FloraStatus" ColumnName="FloraStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PlanesiaDBsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

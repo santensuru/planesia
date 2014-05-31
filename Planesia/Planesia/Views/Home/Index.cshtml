@@ -1,31 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
-
-<!DOCTYPE html>
-<head>
-    <title> Planesia - Maps </title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta charset="utf-8">
-    <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" type="text/css" />
-    <style>
-        html, body, #map-canvas
-        {
-            height: 90%;
-            margin-left: 20px;
-            margin-right: 20px;
-            padding: 0px;
-        }
-    </style>
-
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
     <script>
         var map;
         function initialize()
         {
             //var anggrek = new google.maps.LatLng(0.296953, 114.586458);
             //var rafflesia = new google.maps.LatLng(0, 102);
+
             var mapOptions =
             {
                 zoom: 5,
@@ -111,43 +94,51 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-</head>
 
-<body>
-    <div id="menu">
-        <div id="filter-menu">
+<div class="row" style="height:100%;">
+    <div class="col-md-3">
+        <div class="container">
             <form>
                 Filter Maps
-                <br>
-                <input type="checkbox" name="vehicle" value="Flora">Flora
-                <input type="checkbox" name="vehicle" value="Fauna">Fauna
-                <br>
-                <input type="checkbox" name="vehicle" value="Extinct">Extinct
-                <br>
-                <input type="checkbox" name="vehicle" value="Endangered">Endangered
-                <br>
-                <input type="checkbox" name="vehicle" value="Safe">Safe
-            </form>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Flora
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Fauna
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                            Extinct
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Endangered
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Safe
+                    </label>
+                </div>
+           </form>
+            <iframe width="300" height="180" src="//www.youtube.com/embed/sFIL0l-e1j4" frameborder="0" allowfullscreen></iframe>
         </div>
-        <br>
-        <input type="search">
-        <br>
-        <br>
-        <div id="login-menu">
-            <form method="post" action="">
-                Email       : <input type="email">
-                Password    : <input type="password">
-                <input type="submit" id="button-login" name="submit" value="LOGIN">
-            </form>
-            <a href="forgot-password">Forgot password?</a>
-            <br>
-        </div>
-        <br>
-        <iframe width="250" height="180" src="//www.youtube.com/embed/sFIL0l-e1j4" frameborder="0" allowfullscreen>
-        </iframe>
     </div>
-
-    <div id="map-canvas"></div>
-</body>
-
-</html>
+    <div class="container" style="height:100%;">
+        <div class="col-md-9" style="height: 100%;">
+            <div class="container" style="height:100%;">
+                <div id="map-canvas" style="height:500px; width:120%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
