@@ -4,7 +4,7 @@
     ViewBag.Title = "Campaign";
 }
 
-<h2>Campaign</h2>
+@*<h2>Campaign</h2>*@
 
 @using (Html.BeginForm()) 
 {
@@ -15,13 +15,13 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.CampaignId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CampaignId)
                 @Html.ValidationMessageFor(model => model.CampaignId)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CampaignName, new { @class = "control-label col-md-2" })
@@ -47,13 +47,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.UserId, "UserId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("UserId", String.Empty)
                 @Html.ValidationMessageFor(model => model.UserId)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CampaignStatus, new { @class = "control-label col-md-2" })
