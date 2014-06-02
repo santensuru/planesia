@@ -61,6 +61,9 @@
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -208,6 +211,7 @@
     <Compile Include="Models\Campaign.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CampaignHelper.cs" />
     <Compile Include="Models\Distribution.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
@@ -310,6 +314,7 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Home\CreateCampaign.cshtml" />
     <Content Include="Views\Home\Campaign.cshtml" />
   </ItemGroup>
   <ItemGroup>

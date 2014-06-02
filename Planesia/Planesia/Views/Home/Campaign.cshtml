@@ -1,76 +1,56 @@
-﻿@model Planesia.Models.Campaign
+﻿@model IEnumerable<Planesia.Models.Campaign>
 
 @{
     ViewBag.Title = "Campaign";
 }
+ 
+<table class="table">
+    <tr>
+        <th>
+            Campaign Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            By
+        </th>
+    </tr>
 
-@*<h2>Campaign</h2>*@
+    @try
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CampaignName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CampaignDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CampaignDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.CampaignId }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.CampaignId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.CampaignId })
+                    </td>*@
+            </tr>
+        }
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Campaign</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+    }
+    catch (Exception e)
+    {
+        <tr><td colspan="4">@e.Message</td></tr>
+    }
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.CampaignId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignId)
-                @Html.ValidationMessageFor(model => model.CampaignId)
-            </div>
-        </div>*@
+</table>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampaignName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignName)
-                @Html.ValidationMessageFor(model => model.CampaignName)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampaignDescription, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignDescription)
-                @Html.ValidationMessageFor(model => model.CampaignDescription)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampaignDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignDate)
-                @Html.ValidationMessageFor(model => model.CampaignDate)
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.UserId, "UserId", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("UserId", String.Empty)
-                @Html.ValidationMessageFor(model => model.UserId)
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampaignStatus, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignStatus)
-                @Html.ValidationMessageFor(model => model.CampaignStatus)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<p>    Create Your Campaign  @Html.ActionLink("Here", "CreateCampaign")        </p>
