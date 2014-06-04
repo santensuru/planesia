@@ -11,6 +11,8 @@ namespace Planesia.Controllers
 {
     public class HomeController : Controller
     {
+        private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,34 @@ namespace Planesia.Controllers
         {
             return View();
         }
+
+        public ActionResult Campaign()
+        {
+            return View(db.Campaigns.ToList());
+        }
+
+        public ActionResult CreateCampaign()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCampaign([Bind(Include = "CampaignId, CampaignName, CampaignDescription, CampaignDate, UserId, CampaignStatus")]  Campaign campaign)
+        {
+            if (ModelState.IsValid)
+            {
+                campaign.CampaignId = db.Campaigns.Count() + 1;
+                campaign.UserId = 1;
+                campaign.CampaignStatus = "not";
+                db.Campaigns.Add(campaign);
+                db.SaveChanges();
+                return RedirectToAction("Campaign");
+            }
+
+            return View(campaign);
+        }
+
 
         public ActionResult Funedugame()
         {

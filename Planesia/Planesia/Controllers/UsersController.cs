@@ -17,6 +17,16 @@ namespace Planesia.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            //List<User> users;
+            //try
+            //{
+            //    users = db.Users.ToList();
+            //    return View(users);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return View();  
+            //}
             return View(db.Users.ToList());
         }
 
