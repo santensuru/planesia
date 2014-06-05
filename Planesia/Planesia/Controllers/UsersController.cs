@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Planesia.Models;
 
 namespace Planesia.Controllers
@@ -133,5 +134,19 @@ namespace Planesia.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "Username,Password")] User user)
+        {
+            var query = from u in db.Users
+                        where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
+                        select u;
+            
+            foreach(var i in query)
+            {
+                
+            }
+        }
+
     }
 }

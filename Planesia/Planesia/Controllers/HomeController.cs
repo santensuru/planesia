@@ -74,22 +74,12 @@ namespace Planesia.Controllers
             return View(Planesia.Models.RssReader.GetRssFeed().ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Signup()
-        {
-            return View();
-        }
-
-        public ActionResult Signin()
+        public ActionResult Register()
         {
             return View();
         }
 
         public ActionResult Contact()
-        {
-            return View();
-        }
-
-        public ActionResult About()
         {
             return View();
         }

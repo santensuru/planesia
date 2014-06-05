@@ -61,6 +61,9 @@
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -200,6 +203,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Pagination.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +212,7 @@
     <Compile Include="Models\Campaign.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CampaignHelper.cs" />
     <Compile Include="Models\Distribution.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
@@ -246,7 +251,6 @@
       <DependentUpon>PlanesiaDBs.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
@@ -304,14 +308,15 @@
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Home\Unique.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
-    <Content Include="Views\Home\Campaign.cshtml" />
     <Content Include="Views\Home\Funedugame.cshtml" />
-    <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Home\CreateCampaign.cshtml" />
+    <Content Include="Views\Home\Campaign.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
