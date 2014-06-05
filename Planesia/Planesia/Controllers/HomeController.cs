@@ -83,5 +83,27 @@ namespace Planesia.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "Username,Password")] User user)
+        {
+            var query = from u in db.Users
+                        where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
+                        select u;
+
+            foreach(var item in query)
+            {
+                Session["UserId"] = item.Username.ToString();
+                Session["UserName"] = item.Username.ToString();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -135,18 +135,5 @@ namespace Planesia.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public ActionResult Login([Bind(Include = "Username,Password")] User user)
-        {
-            var query = from u in db.Users
-                        where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
-                        select u;
-            
-            foreach(var i in query)
-            {
-                
-            }
-        }
-
     }
 }

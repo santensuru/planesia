@@ -28,23 +28,33 @@
                         <li><a href="/Home/Contact">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/Users/Create">Register</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <form class="navbar-form navbar-left" role="search" action="/Users/Login" method="post">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Username" name="username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password" name="password">
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Log in</button>
-                                    </form>
+                        @{
+                            if (Session["UserName"] != null)
+                            {
+                                <li><a href="">@Session["Username"]</a></li>
+                                <li><a href="/Home/Logout">Log out</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Users/Create">Register</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Username" name="username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                                                </div>
+                                                <button type="submit" class="btn btn-default">Log in</button>
+                                            </form>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>
