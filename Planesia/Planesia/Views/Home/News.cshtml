@@ -32,7 +32,7 @@
         }
 
     </table>
-    <div class="pager">
+    <div style="text-align: center">
     @Html.PagedListPager(Model, page => Url.Action("News",
             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
