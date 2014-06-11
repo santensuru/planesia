@@ -12,30 +12,32 @@
                 center: new google.maps.LatLng(-1, +118.75083)
             };
 
+            
             var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-            var rafflesiaex = '<div id="content">' +
+            var orangutanex = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
-            '<h1 id="firstHeading" class="firstHeading">Rafflesia</h1>' +
+            '<h1 id="firstHeading" class="firstHeading">Orang Utan</h1>' +
             '<div id="bodyContent">' +
-            '<img height="45" weight="45" src="http://www.parasiticplants.siu.edu/Rafflesiaceae/images/RafflesiaArnFlw3.jpg"> ' +
-            '<p><b>Anggrek Bulan</b>, Rafflesia is a genus of parasitic flowering plants. It contains approximately 28 species, all found in southeastern Asia, on Indonesia, Malay Peninsula, Borneo, Sumatra, Thailand and the Philippines. ' +
-            '<a href = "http://en.wikipedia.org/wiki/Rafflesia"> wikipedia</a> ' +
+            '<img height="45" weight="45" src="http://i1290.photobucket.com/albums/b522/RadheaDewi/OrangUtanKecil_zps16b4ecc6.png"> ' +
+            '<p><b>Orang Utan</b> is a unique species typically fom Borneo, Indonesia. ' +
+            '<p>More info : ' +
+            '<a href = "http://en.wikipedia.org/wiki/Orangutan"> wikipedia</a> ' +
             '</div>' +
             '</div>';
 
             var infowindowd = new google.maps.InfoWindow
             ({
-                content: rafflesiaex
+                content: orangutanex
             });
 
             //Setting the position of the Glastonbury map marker.
-            var markerPositionOrangutan = new google.maps.LatLng(0.296953, 114.586458);
+            var markerPositionOrangutan = new google.maps.LatLng(-3.490555400000000000, 114.833009400000040000);
 
             //Setting the icon to be used with the Glastonbury map marker.
             var markerIconOrangutan = {
-                url: 'http://i1290.photobucket.com/albums/b522/RadheaDewi/OrangUtan_zps20adcda4.png',
+                url: 'http://i1290.photobucket.com/albums/b522/RadheaDewi/OrangUtanKecil_zps16b4ecc6.png',
                 //The size image file.
                 size: new google.maps.Size(100, 100),
                 //The point on the image to measure the anchor from. 0, 0 is the top left.
@@ -72,6 +74,8 @@
 
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+
+        
     </script>
 
 <div class="row" style="height:100%;">
