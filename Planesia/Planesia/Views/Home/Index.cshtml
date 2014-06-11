@@ -6,9 +6,6 @@
         var map;
         function initialize()
         {
-            //var anggrek = new google.maps.LatLng(0.296953, 114.586458);
-            //var rafflesia = new google.maps.LatLng(0, 102);
-
             var mapOptions =
             {
                 zoom: 5,
@@ -28,35 +25,17 @@
             '</div>' +
             '</div>';
 
-            //var bintang =
-            //{
-            //    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-            //    fillColor: 'green',
-            //    fillOpacity: 0.8,
-            //    scale: 0.15,
-            //    strokeColor: 'green',
-            //    strokeWeight: 1
-            //};
-
             var infowindowd = new google.maps.InfoWindow
             ({
                 content: rafflesiaex
             });
-
-            //var markerx = new google.maps.Marker
-            //({
-            //    position: rafflesia,
-            //    map: map,
-            //    icon: bintang,
-            //    title: 'Rafflesia'
-            //});
 
             //Setting the position of the Glastonbury map marker.
             var markerPositionGlastonbury = new google.maps.LatLng(0.296953, 114.586458);
 
             //Setting the icon to be used with the Glastonbury map marker.
             var markerIconGlastonbury = {
-                url: 'http://img3.wikia.nocookie.net/__cb20120608143358/farmville/images/thumb/f/f9/Mini_Panda-icon.png/70px-Mini_Panda-icon.png',
+                url: 'http://i1290.photobucket.com/albums/b522/RadheaDewi/OrangUtan_zps20adcda4.png',
                 //The size image file.
                 size: new google.maps.Size(100, 100),
                 //The point on the image to measure the anchor from. 0, 0 is the top left.
@@ -66,29 +45,29 @@
             };
 
             //Setting the shape to be used with the Glastonbury map marker.
-            var markerShapeGlastonbury = {
+            var markerShapeOrangutan = {
                 coord: [12, 4, 216, 22, 212, 74, 157, 70, 184, 111, 125, 67, 6, 56],
                 type: 'poly'
             };
 
             //Creating the Glastonbury map marker.
-            var markerGlastonbury = new google.maps.Marker({
+            var markerOrangutan = new google.maps.Marker({
                 //uses the position set above.
-                position: markerPositionGlastonbury,
+                position: markerPositionOrangutan,
                 //adds the marker to the map.
                 map: map,
-                title: 'Glastonbury Festival',
+                title: 'Orangutan',
                 //assigns the icon image set above to the marker.
-                icon: markerIconGlastonbury,
+                icon: markerIconOrangutan,
                 //assigns the icon shape set above to the marker.
-                shape: markerShapeGlastonbury,
+                shape: markerShapeOrangutan,
                 //sets the z-index of the map marker.
                 zIndex: 102
             });
 
-            google.maps.event.addListener(markerGlastonbury, 'click', function ()
+            google.maps.event.addListener(markerOrangutan, 'click', function ()
             {
-                infowindowd.open(map, markerGlastonbury);
+                infowindowd.open(map, markerOrangutan);
             });
 
         }
