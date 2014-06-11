@@ -18,12 +18,12 @@ namespace Planesia.Controllers
             return View();
         }
 
-        public ActionResult Map()
+        public ActionResult Categories()
         {
             return View();
         }
 
-        public ActionResult Categories()
+        public ActionResult Funedugame()
         {
             return View();
         }
@@ -55,12 +55,6 @@ namespace Planesia.Controllers
             return View(campaign);
         }
 
-
-        public ActionResult Funedugame()
-        {
-            return View();
-        }
-
         public ActionResult Unique()
         {
             return View();
@@ -74,16 +68,15 @@ namespace Planesia.Controllers
             return View(Planesia.Models.RssReader.GetRssFeed().ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
-
         public ActionResult Contact()
         {
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Login([Bind(Include = "Username,Password")] User user)
