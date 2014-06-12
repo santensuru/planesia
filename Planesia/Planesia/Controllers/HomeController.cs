@@ -18,6 +18,11 @@ namespace Planesia.Controllers
             return View();
         }
 
+        public ActionResult Galerifoto()
+        {
+            return View();
+        }
+
         public ActionResult Categories()
         {
             return View();

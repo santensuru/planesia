@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>@ViewBag.Title - Planesia</title>
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
 </head>
 <body style="padding-top: 70px;">
@@ -95,7 +96,6 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - Planesia</p>
         </footer>
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
