@@ -7,91 +7,67 @@
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
 </head>
-<body style="padding-top: 70px;">
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<body style="padding-top: 20px;">
+    <div id="gambarheader">
+        <img src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/planesia_zps1d1d786d.png">
+    </div>
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/Home/Index" class="navbar-brand">Maps</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/Home/Categories">Categories</a></li>
-                        <li><a href="/Home/Funedugame">Fun Edu-Game</a></li>
-                        <li><a href="/Home/Campaign">Campaign</a></li>
-                        <li><a href="/Home/Unique">Unique</a></li>
-                        <li><a href="/Home/News">News</a></li>
-                        <li><a href="/Home/Contact">Contact</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                <div id='cssmenu'>
+                    <ul>
                         @{
                             if (Session["UserName"] != null)
                             {
-                                <li><a href="">@Session["Username"]</a></li>
-                                <li><a href="/Home/Logout">Log out</a></li>
+                                <li><a href=""><span>@Session["Username"]</span></a></li>
+                                <li><a href="/Home/Logout"><span>Logout</span></a></li>
                             }
                             else
-                            {
-                            <li><a href="/Users/Create">Register</a></li
-
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                            Login
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Plase login</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username" name="username">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Log in</button>
-                                </form>
-                            </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-                                @*<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Username" name="username">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Password" name="password">
-                                                </div>
-                                                <button type="submit" class="btn btn-default">Log in</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </li>*@
+                            { 
+                                <li><a href="/Home/Index">Maps</a></li>
+                                <li><a href="/Home/Categories">Categories</a></li>
+                                <li><a href="/Home/Funedugame">Fun Edu-Game</a></li>
+                                <li><a href="/Home/Campaign">Campaign</a></li>
+                                <li><a href="/Home/Unique">Unique</a></li>
+                                <li><a href="/Home/News">News</a></li>
+                                <li><a href="/Home/Contact">Contact</a></li>
+                                <li><a href="/Users/Create">Register</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
                             }
                         }
                     </ul>
                 </div>
+                <br>
+
+                    <!-- Modal Log In -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Planesia login</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Username" name="username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password" name="password">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Log in</button
+                                    </form>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
+                
          @RenderBody()
         <footer>
             <p>&copy; @DateTime.Now.Year - Planesia</p>

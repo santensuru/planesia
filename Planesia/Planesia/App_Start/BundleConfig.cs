@@ -29,6 +29,7 @@ namespace Planesia
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Style.css",
+                      "~/Content/style-menu-navigasi.css",
                       "~/Content/PagedList.css"));
         }
     }
