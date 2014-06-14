@@ -16,7 +16,7 @@ namespace Planesia.Controllers
     public class UsersController : Controller
     {
         //private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
-        UserService us = new UserService(new UserRepositoryMock());
+        UserService us = new UserService();
 
         // GET: Users
         public ActionResult Index()
