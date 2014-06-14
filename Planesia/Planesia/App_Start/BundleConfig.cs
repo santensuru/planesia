@@ -21,11 +21,13 @@ namespace Planesia
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/jssor.core.js",
+                      "~/Scripts/jssor.slider.js",
+                      "~/Scripts/jssor.utils.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      
                       "~/Content/Style.css",
                       "~/Content/PagedList.css"));
         }
