@@ -18,7 +18,7 @@ namespace Planesia.Repository
             users.Add(new User() { UserId = 2, FirstName = "GHI", LastName = "JKL" });
             users.Add(new User() { UserId = 3, FirstName = "MNO", LastName = "PQR" });
             users.Add(new User() { UserId = 4, FirstName = "STU", LastName = "VWX" });
-            users.Add(new User() { UserId = 5, FirstName = "Y", LastName = "Z" });
+            users.Add(new User() { UserId = 5, FirstName = "YAA", LastName = "ZBB" });
         }
         
         public List<User> Users
@@ -42,12 +42,22 @@ namespace Planesia.Repository
 
         public void UpdateUser(User user)
         {
-            User result = (from u in users
-                           where u.UserId == user.UserId
-                           select u).FirstOrDefault<User>();
+            //User result = (from u in users
+            //               where u.UserId == user.UserId
+            //               select u).FirstOrDefault<User>();
+
+            int index = users.FindIndex(p => p.UserId == user.UserId);
+            if (index < 0)
+            {
+                users.Add(user);
+            }
+            else
+            {
+                users[index] = user;
+            }
 
             // Masih gagal :v
-            result = user;
+            //result = user;
         }
 
         public void DeleteUser(int id)
