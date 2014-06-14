@@ -43,9 +43,15 @@
                 position: position,
                 map: map
             });
-            alert(position.lng);
-            document.getElementById('latitude').innerHTML = position.lat;
-            document.getElementById('longitude').innerHTML = position.lng;
+            var latLabel = document.getElementById('latitudel');
+            var lngLabel = document.getElementById('longitudel');
+            var latInp = document.getElementById('latitude');
+            var lngInp = document.getElementById('longitude');
+            latLabel.innerHTML = "Latitude Coordinate : " + position.lat();
+            lngLabel.innerHTML = "Longitude Coordinate : " + position.lng();
+            latInp.value = position.lat();
+            lngInp.value = position.lng();
+            
             place = false;
             map.panTo(position);
         }
@@ -121,11 +127,13 @@
                     <input type="text" class="form-control" id="latin" name="latin"/>
                 </div>
                 <div class="form-group">
-                    <label for="latitude">Latitude Coordinate</label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" />
-                    <label for="longitude">Longitude Coordinate</label>
-                    <input type="text" class="form-control" id="longitude" name="longitude"/>
+                    <label id="latitudel" >Latitude Coordinate : </label>
                 </div>
+                <div class="form-group">
+                    <label id="longitudel" >Longitude Coordinate : </label>
+                </div>
+                <input type="text" class="form-control" id="latitude" name="latitude" style="display:none;"/>
+                <input type="text" class="form-control" id="longitude" name="longitude" style="display:none;" />
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea class="form-control" id="description" name="description"></textarea>

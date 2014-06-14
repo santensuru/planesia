@@ -8,27 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Planesia.Models;
+using Planesia.Service;
+using Planesia.Repository;
 
 namespace Planesia.Controllers
 {
     public class UsersController : Controller
     {
-        private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        //private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        UserService us = new UserService(new UserRepositoryMock());
 
         // GET: Users
         public ActionResult Index()
         {
-            //List<User> users;
-            //try
-            //{
-            //    users = db.Users.ToList();
-            //    return View(users);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return View();  
-            //}
-            return View(db.Users.ToList());
+            return View(us.GetAllUsers());
+            //return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
@@ -38,7 +32,10 @@ namespace Planesia.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            //User user = db.Users.Find(id);
+
+            User user = us.GetUserById(id.GetValueOrDefault());
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -61,8 +58,11 @@ namespace Planesia.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                //db.Users.Add(user);
+                //db.SaveChanges();
+
+                us.AddUser(user);
+
                 return RedirectToAction("Index");
             }
 
@@ -76,7 +76,10 @@ namespace Planesia.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            //User user = db.Users.Find(id);
+
+            User user = us.GetUserById(id.GetValueOrDefault());
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -93,8 +96,11 @@ namespace Planesia.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(user).State = EntityState.Modified;
+                //db.SaveChanges();
+
+                us.UpdateUser(user);
+
                 return RedirectToAction("Index");
             }
             return View(user);
@@ -107,7 +113,10 @@ namespace Planesia.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            //User user = db.Users.Find(id);
+
+            User user = us.GetUserById(id.GetValueOrDefault());
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -120,20 +129,23 @@ namespace Planesia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
+            //User user = db.Users.Find(id);
+            //db.Users.Remove(user);
+            //db.SaveChanges();
+
+            us.DeleteUser(id);
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
     }
 }
