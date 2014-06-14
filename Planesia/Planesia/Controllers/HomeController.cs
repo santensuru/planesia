@@ -56,7 +56,6 @@ namespace Planesia.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Campaign");
             }
-
             return View(campaign);
         }
 
@@ -101,6 +100,19 @@ namespace Planesia.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AddToMaps()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddMaps(FormCollection form)
+        {
+            PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+            if(form[''])
             return RedirectToAction("Index");
         }
     }

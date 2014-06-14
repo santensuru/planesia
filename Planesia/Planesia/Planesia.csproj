@@ -322,6 +322,7 @@
     <Content Include="Views\Home\CreateCampaign.cshtml" />
     <Content Include="Views\Home\Campaign.cshtml" />
     <Content Include="Views\Home\Galerifoto.cshtml" />
+    <Content Include="Views\Home\AddToMaps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
