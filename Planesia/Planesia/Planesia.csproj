@@ -255,6 +255,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style-menu-navigasi.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
