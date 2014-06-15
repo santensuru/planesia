@@ -6,12 +6,16 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using Planesia.Models;
+using Planesia.Service;
+using Planesia.Repository;
 
 namespace Planesia.Controllers
 {
     public class HomeController : Controller
     {
         private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+
+        CampaignService cs = new CampaignService();
         
         public ActionResult Index()
         {
@@ -35,7 +39,9 @@ namespace Planesia.Controllers
 
         public ActionResult Campaign()
         {
-            return View(db.Campaigns.ToList());
+            return View(cs.GetAllCampaigns());
+            
+            //return View(db.Campaigns.ToList());
         }
 
         public ActionResult CreateCampaign()
@@ -52,8 +58,9 @@ namespace Planesia.Controllers
                 campaign.CampaignId = db.Campaigns.Count() + 1;
                 campaign.UserId = 1;
                 campaign.CampaignStatus = "not";
-                db.Campaigns.Add(campaign);
-                db.SaveChanges();
+                //db.Campaigns.Add(campaign);
+                //db.SaveChanges();
+                cs.AddCampaign(campaign);
                 return RedirectToAction("Campaign");
             }
             return View(campaign);
@@ -108,12 +115,21 @@ namespace Planesia.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AddMaps(FormCollection form)
-        {
-            PlanesiaDBsEntities db = new PlanesiaDBsEntities();
-            if(form[''])
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public ActionResult AddMaps(FormCollection form)
+        //{
+        //    PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        //    if(form[''])
+        //    return RedirectToAction("Index");
+        //}
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
