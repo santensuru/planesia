@@ -286,6 +286,7 @@
       <LastGenOutput>Planesia.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -331,6 +332,7 @@
     <Content Include="Views\Home\Galerifoto.cshtml" />
     <Content Include="Views\Home\AddFauna.cshtml" />
     <Content Include="Views\Home\AddFlora.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

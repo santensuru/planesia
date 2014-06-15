@@ -2,99 +2,12 @@
     ViewBag.Title = "Maps";
 }
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script>
-    jQuery(document).ready(function ($) {
-        var options = {
-            $AutoPlay: true,
-            $AutoPlayInterval: 4000,
-            $SlideDuration: 500,
-            $DragOrientation: 3,
-
-            $ThumbnailNavigatorOptions: {
-                $Class: $JssorThumbnailNavigator$,
-                $ChanceToShow: 2,
-
-                $Loop: 2,
-                $SpacingX: 3,
-                $SpacingY: 3,
-                $DisplayPieces: 6,
-                $ParkingPosition: 204,
-
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$,
-                    $ChanceToShow: 2,
-                    $AutoCenter: 2,
-                    $Steps: 6
-                }
-            }
-        };
-
-        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-
-        function ScaleSlider() {
-            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-            if (parentWidth)
-                jssor_slider1.$SetScaleWidth(Math.min(parentWidth, 720));
-            else
-                window.setTimeout(ScaleSlider, 30);
-        }
-
-        ScaleSlider();
-
-        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-            $(window).bind('resize', ScaleSlider);
-        }
-
-    });
-    var map;
-    var isPlaced = false;
-    var marker = new google.maps.Marker();
-    var selectedPosition = new google.maps.LatLng();
-    $(document).ready(function () {
-        initialize();
-        function initialize() {
-            var mapOptions =
-            {
-                zoom: 5,
-                center: new google.maps.LatLng(-1, +118.75083),
-                panControl: true,
-                zoomControl: true,
-                zoomControlOptions: {
-                    style: google.maps.ZoomControlStyle.SMALL
-                },
-                scaleControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-            google.maps.event.addListener(map, 'click', function (event) {
-                if (markerCount == 0) {
-                    placeMarker(event.latLng, map);
-                }
-            });
-        }
-    });
-
-    function placeMarker(position, map) {
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map
-        });
-        markerCount++;
-        var latLabel = document.getElementById('latitudel');
-        var lngLabel = document.getElementById('longitudel');
-        var latInp = document.getElementById('latitude');
-        var lngInp = document.getElementById('longitude');
-        latLabel.innerHTML = "Latitude Coordinate : " + position.lat();
-        lngLabel.innerHTML = "Longitude Coordinate : " + position.lng();
-        latInp.value = position.lat();
-        lngInp.value = position.lng();
-        map.panTo(position);
-    }
-</script>
 
 <div class="row" style="margin-bottom: 25px;">
+    @*Kodingan kiri start here*@
     <div class="col-md-3" style="border: 3px dashed rgb(4, 105, 96); border-radius: 15px; margin-right:15px; margin-left:15px; padding: 0;">
         <div class="container">
+            <iframe width="300" height="200" src="//www.youtube.com/embed/sFIL0l-e1j4" frameborder="0"></iframe>
             <form>
                 Filter Maps
                 <div class="checkbox">
@@ -128,30 +41,30 @@
                     </label>
                 </div>
             </form>
-            <iframe width="300" height="200" src="//www.youtube.com/embed/sFIL0l-e1j4" frameborder="0"></iframe>
             <br>
+            <div class="container">
+                <a href="/Home/AddFauna" class="btn btn-default">Add fauna to the maps</a>
+            </div>
             <br>
-        </div>
-        <div class="container">
-            <a href="/Home/AddFauna" class="btn btn-default">Add fauna</a>
-        </div>
-        <br>
-        <div class="container">
-            <a href="/Home/AddFlora" class="btn btn-default">Add flora</a>
+            <div class="container">
+                <a href="/Home/AddFlora" class="btn btn-default">Add flora to the maps</a>
+            </div>
+            <br>
         </div>
     </div>
+    @*Kodingan kiri stop here*@
 
-    <div class="col-md-8" style="border: 3px dashed rgb(4, 105, 96); border-radius: 15px; ;margin-left:30px; margin-right:10px;">
+@*Galeri Foto Kodingan start here*@
+<div class="col-md-8" style="border: 3px dashed rgb(4, 105, 96); border-radius: 15px; margin-left:30px; margin-right:10px; padding-bottom:5px; padding-top:5px;">
         <center>
-            @*Galeri Foto Kodingan start here*@
             <div id="slider1_container" style="position: relative; width: 720px; height: 480px; overflow: hidden;">
 
                 <div u="loading" style="position: absolute; top: 0px; left: 0px;">
                     <div style="filter: alpha(opacity=70); opacity:0; position: absolute; display: block;
-                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+                        background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
                     </div>
                     <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
-                top: 0px; left: 0px;width: 100%;height:100%;">
+                        top: 0px; left: 0px;width: 100%;height:100%;">
                     </div>
                 </div>
 
@@ -159,78 +72,34 @@
             overflow: hidden;">
                     <div>
                         <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/3Burung_zps15601e90.jpg" />
-                        <img u="thumb" src="../img/travel/thumb-07.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/3Burung_zps15601e90.jpg" />
                     </div>
                     <div>
                         <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/5Bunga_zps2e91b8fb.jpg" />
-                        <img u="thumb" src="../img/travel/thumb-08.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/5Bunga_zps2e91b8fb.jpg" />
                     </div>
                     <div>
                         <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/2Buah_zps6cebddf7.jpg" />
-                        <img u="thumb" src="../img/travel/thumb-07.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/2Buah_zps6cebddf7.jpg" />
                     </div>
                     <div>
                         <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/1Gajah_zpsbbefca6f.jpg" />
-                        <img u="thumb" src="../img/travel/thumb-09.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/1Gajah_zpsbbefca6f.jpg" />
                     </div>
                     <div>
                         <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/BungaBangkai_zpse6897832.jpg" />
-                        <img u="thumb" src="../img/travel/thumb-10.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/BungaBangkai_zpse6897832.jpg" />
+                    </div>
+                    <div>
+                        <img u="image" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/4Koala_zpsabe7650b.jpg" />
+                        <img u="thumb" src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/4Koala_zpsabe7650b.jpg" />
                     </div>
                 </div>
 
 
                 <div u="thumbnavigator" class="jssort07" style="position: absolute; width: 720px; height: 100px; left: 0px; bottom: 0px; overflow: hidden; ">
                     <div style=" background-color: #000; filter:alpha(opacity=30); opacity:.3; width: 100%; height:100%;"></div>
-                    <style>
-                        .jssort07 .i {
-                            position: absolute;
-                            top: 0px;
-                            left: 0px;
-                            width: 99px;
-                            height: 66px;
-                            filter: alpha(opacity=80);
-                            opacity: .8;
-                        }
 
-                        .jssort07 .p:hover .i, .jssort07 .pav .i {
-                            filter: alpha(opacity=100);
-                            opacity: 1;
-                        }
-
-                        .jssort07 .o {
-                            position: absolute;
-                            top: 0px;
-                            left: 0px;
-                            width: 97px;
-                            height: 64px;
-                            border: 1px solid #000;
-                            transition: border-color .6s;
-                            -moz-transition: border-color .6s;
-                            -webkit-transition: border-color .6s;
-                            -o-transition: border-color .6s;
-                        }
-
-                        * html .jssort07 .o {
-                            width: 99px;
-                            height: 66px;
-                        }
-
-                        .jssort07 .pav .o, .jssort07 .p:hover .o {
-                            border-color: #fff;
-                        }
-
-                        .jssort07 .pav:hover .o {
-                            border-color: #0099FF;
-                        }
-
-                        .jssort07 .p:hover .o {
-                            transition: none;
-                            -moz-transition: none;
-                            -webkit-transition: none;
-                            -o-transition: none;
-                        }
-                    </style>
                     <div u="slides" style="cursor: move;">
                         <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 99px; HEIGHT: 66px; TOP: 0; LEFT: 0;">
                             <thumbnailtemplate class="i" style="position:absolute;"></thumbnailtemplate>
@@ -238,39 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <style>
-                        .jssora11l, .jssora11r, .jssora11ldn, .jssora11rdn {
-                            position: absolute;
-                            cursor: pointer;
-                            display: block;
-                            background: url(../img/a11.png) no-repeat;
-                            overflow: hidden;
-                        }
 
-                        .jssora11l {
-                            background-position: -11px -41px;
-                        }
-
-                        .jssora11r {
-                            background-position: -71px -41px;
-                        }
-
-                        .jssora11l:hover {
-                            background-position: -131px -41px;
-                        }
-
-                        .jssora11r:hover {
-                            background-position: -191px -41px;
-                        }
-
-                        .jssora11ldn {
-                            background-position: -251px -41px;
-                        }
-
-                        .jssora11rdn {
-                            background-position: -311px -41px;
-                        }
-                    </style>
                     <span u="arrowleft" class="jssora11l" style="width: 37px; height: 37px; top: 123px; left: 8px;">
                     </span>
                     <span u="arrowright" class="jssora11r" style="width: 37px; height: 37px; top: 123px; right: 8px">
@@ -278,14 +115,16 @@
                 </div>
                 <a style="display: none" href="http://www.jssor.com">javascript</a>
             </div>
-            @*Galeri Foto Kodingan stop here*@
         </center>
     </div>
 </div>
+@*Galeri Foto Kodingan stop here*@
 
+@*Kodingan Google Maps start here*@
 <div sstyle="padding-bottom: 25px">
     <center>
         <div id="map-canvas" style="height:500px; width:80%;"></div>
     </center>
 </div>
+@*Kodingan Google Maps stop here*@
 <br>

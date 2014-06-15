@@ -24,6 +24,7 @@ namespace Planesia
                       "~/Scripts/jssor.core.js",
                       "~/Scripts/jssor.slider.js",
                       "~/Scripts/jssor.utils.js",
+                      "~/Scripts/index.js",
                       //"~/Scripts/js-image-slider.js",
                       "~/Scripts/respond.js"));
 

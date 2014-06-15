@@ -108,6 +108,11 @@ namespace Planesia.Controllers
             return View();
         }
 
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
         public ActionResult AddFauna()
         {
             return View();
@@ -124,8 +129,8 @@ namespace Planesia.Controllers
             Fauna fauna = new Fauna();
             fauna.FaunaName = form.Get("name");
             fauna.FaunaLatinName = form.Get("latin");
-            fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
-            fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+            //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+            //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
             fauna.FaunaOtherDescription = form.Get("description");
             fauna.FaunaDiscoverer = form.Get("discoverer");
             fauna.FaunaPhoto = form.Get("photolink");
@@ -148,8 +153,8 @@ namespace Planesia.Controllers
             Flora flora = new Flora();
             flora.FloraName= form.Get("name");
             flora.FloraLatinName = form.Get("latin");
-            flora.FloraLongitude = float.Parse(form.Get("longitude"));
-            flora.FloraLatitude = float.Parse(form.Get("latitude"));
+            //flora.FloraLongitude = float.Parse(form.Get("longitude"));
+            //flora.FloraLatitude = float.Parse(form.Get("latitude"));
             flora.FloraOtherDescription = form.Get("description");
             flora.FloraDiscoverer = form.Get("discoverer");
             flora.FloraPhoto = form.Get("photolink");
