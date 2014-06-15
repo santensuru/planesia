@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Maps";
+}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+    var map;
+    var isPlaced = false;
+    var selectedPosition = new google.maps.LatLng();
+    $(document).ready(function () {
+        initialize();
+        function initialize() {
+            var mapOptions =
+            {
+                zoom: 5,
+                center: new google.maps.LatLng(-1, +118.75083),
+                panControl: true,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL
+                },
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(-1, +118.75083),
+                map: map
+            });
+            google.maps.event.addListener(map, 'click', function (event) {
+                placeMarker(event.latLng, marker);
+            });
+        }
+    });
+    function placeMarker(position, marker) {
+        marker.setPosition(position);
+        var latLabel = document.getElementById('latitudel');
+        var lngLabel = document.getElementById('longitudel');
+        var latInp = document.getElementById('latitude');
+        var lngInp = document.getElementById('longitude');
+        latLabel.innerHTML = "Latitude Coordinate : " + position.lat();
+        lngLabel.innerHTML = "Longitude Coordinate : " + position.lng();
+        latInp.value = position.lat();
+        lngInp.value = position.lng();
+    }
+</script>
+<div id="map-canvas" style="height:500px; width:120%;" class="container"></div>
+<form role="form" id="formadd" class="container" method="post" action="/Home/AddFlora">
+    <div class="form-group">
+        <label for="name">Nama</label>
+        <input type="text" class="form-control" id="name" name="name" />
+    </div>
+    <div class="form-group">
+        <label for="latin">Nama Latin</label>
+        <input type="text" class="form-control" id="latin" name="latin" />
+    </div>
+    <div class="form-group">
+        <label id="latitudel">Latitude Coordinate : </label>
+    </div>
+    <div class="form-group">
+        <label id="longitudel">Longitude Coordinate : </label>
+    </div>
+    <input type="text" class="form-control" id="latitude" name="latitude" style="display:none;" />
+    <input type="text" class="form-control" id="longitude" name="longitude" style="display:none;" />
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="distribution">Distribution</label>
+        <input class="form-control" id="distribution" name="distribution" />
+    </div>
+    <div class="form-group">
+        <label for="discoverer">Discoverer</label>
+        <input class="form-control" id="discoverer" name="discoverer" />
+    </div>
+    <div class="form-group">
+        <label for="photolink">Photo link</label>
+        <input type="text" class="form-control" id="photolink" name="photolink" />
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
