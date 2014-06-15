@@ -258,6 +258,7 @@
       <DependentUpon>PlanesiaDBs.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\js-image-slider.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style-menu-navigasi.css" />
     <Content Include="Content\Style.css" />
@@ -292,6 +293,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-image-slider.js" />
     <Content Include="Scripts\jssor.core.js" />
     <Content Include="Scripts\jssor.slider.js" />
     <Content Include="Scripts\jssor.utils.js" />
