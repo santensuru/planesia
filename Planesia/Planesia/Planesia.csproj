@@ -249,6 +249,7 @@
     <Compile Include="Service\CampaignService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UnitTest\CampaignRepositoryTest.cs" />
     <Compile Include="UnitTest\UserRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
