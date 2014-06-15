@@ -213,9 +213,6 @@
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CampaignHelper.cs" />
-    <Compile Include="Models\Distribution.cs">
-      <DependentUpon>Planesia.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Fauna.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
@@ -329,7 +326,8 @@
     <Content Include="Views\Home\CreateCampaign.cshtml" />
     <Content Include="Views\Home\Campaign.cshtml" />
     <Content Include="Views\Home\Galerifoto.cshtml" />
-    <Content Include="Views\Home\AddToMaps.cshtml" />
+    <Content Include="Views\Home\AddFauna.cshtml" />
+    <Content Include="Views\Home\AddFlora.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,16 +6,12 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using Planesia.Models;
-using Planesia.Service;
-using Planesia.Repository;
 
 namespace Planesia.Controllers
 {
     public class HomeController : Controller
     {
         private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
-
-        CampaignService cs = new CampaignService();
         
         public ActionResult Index()
         {
@@ -39,9 +35,7 @@ namespace Planesia.Controllers
 
         public ActionResult Campaign()
         {
-            return View(cs.GetAllCampaigns());
-            
-            //return View(db.Campaigns.ToList());
+            return View(db.Campaigns.ToList());
         }
 
         public ActionResult CreateCampaign()
@@ -58,9 +52,8 @@ namespace Planesia.Controllers
                 campaign.CampaignId = db.Campaigns.Count() + 1;
                 campaign.UserId = 1;
                 campaign.CampaignStatus = "not";
-                //db.Campaigns.Add(campaign);
-                //db.SaveChanges();
-                cs.AddCampaign(campaign);
+                db.Campaigns.Add(campaign);
+                db.SaveChanges();
                 return RedirectToAction("Campaign");
             }
             return View(campaign);
@@ -115,21 +108,61 @@ namespace Planesia.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult AddMaps(FormCollection form)
-        //{
-        //    PlanesiaDBsEntities db = new PlanesiaDBsEntities();
-        //    if(form[''])
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult AddFauna()
+        {
+            return View();
+        }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        public ActionResult AddFlora()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFauna(FormCollection form)
+        {
+            Fauna fauna = new Fauna();
+            fauna.FaunaName = form.Get("name");
+            fauna.FaunaLatinName = form.Get("latin");
+            fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+            fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+            fauna.FaunaOtherDescription = form.Get("description");
+            fauna.FaunaDiscoverer = form.Get("discoverer");
+            fauna.FaunaPhoto = form.Get("photolink");
+            try
+            {
+                db.Faunas.Add(fauna);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(" + ex.Message + ")</script>");
+                Response.Redirect("Error");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFlora(FormCollection form)
+        {
+            Flora flora = new Flora();
+            flora.FloraName= form.Get("name");
+            flora.FloraLatinName = form.Get("latin");
+            flora.FloraLongitude = float.Parse(form.Get("longitude"));
+            flora.FloraLatitude = float.Parse(form.Get("latitude"));
+            flora.FloraOtherDescription = form.Get("description");
+            flora.FloraDiscoverer = form.Get("discoverer");
+            flora.FloraPhoto = form.Get("photolink");
+            try
+            {
+                db.Floras.Add(flora);
+                db.SaveChanges();
+            }
+            catch
+            {
+                Response.Redirect("ErrorPage");
+            }
+            return View();
+        }
     }
 }
