@@ -261,7 +261,7 @@
     <Content Include="Content\js-image-slider.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style-menu-navigasi.css" />
-    <Content Include="Content\Style.css" />
+    <Content Include="Content\style-index.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

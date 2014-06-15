@@ -24,13 +24,13 @@ namespace Planesia
                       "~/Scripts/jssor.core.js",
                       "~/Scripts/jssor.slider.js",
                       "~/Scripts/jssor.utils.js",
-                      "~/Scripts/js-image-slider.js",
+                      //"~/Scripts/js-image-slider.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/js-image-slider.css",
-                      "~/Content/Style.css",
+                      //"~/Content/js-image-slider.css",
+                      "~/Content/style-index.css",
                       "~/Content/style-menu-navigasi.css",
                       "~/Content/PagedList.css"));
         }
