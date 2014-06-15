@@ -108,12 +108,61 @@ namespace Planesia.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AddMaps(FormCollection form)
+        public ActionResult AddFauna()
         {
-            PlanesiaDBsEntities db = new PlanesiaDBsEntities();
-            if(form[''])
-            return RedirectToAction("Index");
+            return View();
+        }
+
+        public ActionResult AddFlora()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFauna(FormCollection form)
+        {
+            Fauna fauna = new Fauna();
+            fauna.FaunaName = form.Get("name");
+            fauna.FaunaLatinName = form.Get("latin");
+            fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+            fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+            fauna.FaunaOtherDescription = form.Get("description");
+            fauna.FaunaDiscoverer = form.Get("discoverer");
+            fauna.FaunaPhoto = form.Get("photolink");
+            try
+            {
+                db.Faunas.Add(fauna);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert(" + ex.Message + ")</script>");
+                Response.Redirect("Error");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFlora(FormCollection form)
+        {
+            Flora flora = new Flora();
+            flora.FloraName= form.Get("name");
+            flora.FloraLatinName = form.Get("latin");
+            flora.FloraLongitude = float.Parse(form.Get("longitude"));
+            flora.FloraLatitude = float.Parse(form.Get("latitude"));
+            flora.FloraOtherDescription = form.Get("description");
+            flora.FloraDiscoverer = form.Get("discoverer");
+            flora.FloraPhoto = form.Get("photolink");
+            try
+            {
+                db.Floras.Add(flora);
+                db.SaveChanges();
+            }
+            catch
+            {
+                Response.Redirect("ErrorPage");
+            }
+            return View();
         }
     }
 }

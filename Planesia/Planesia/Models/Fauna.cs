@@ -24,6 +24,8 @@ namespace Planesia.Models
         public string FaunaPhoto { get; set; }
         public Nullable<int> UserId { get; set; }
         public string FaunaStatus { get; set; }
+        public Nullable<double> FaunaLongitude { get; set; }
+        public Nullable<double> FaunaLatitude { get; set; }
     
         public virtual User User { get; set; }
     }

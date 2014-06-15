@@ -26,7 +26,6 @@ namespace Planesia.Models
         }
     
         public virtual DbSet<Campaign> Campaigns { get; set; }
-        public virtual DbSet<Distribution> Distributions { get; set; }
         public virtual DbSet<Fauna> Faunas { get; set; }
         public virtual DbSet<Flora> Floras { get; set; }
         public virtual DbSet<User> Users { get; set; }
