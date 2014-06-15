@@ -7,12 +7,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
 </head>
-<body style="padding-top: 20px;">
-    <div id="gambarheader">
-        <img src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/planesia_zps1d1d786d.png">
-    </div>
-    <div class="container">
+
+<body style="padding-top: 20px; padding-left: 20px; padding-right: 20px;">
+    <div id="row">
+    <div id="col-md-6">
         <div id='cssmenu'>
+            <img src="http://i100.photobucket.com/albums/m4/Radhea_Permata_Dewi/15823-ornamental-plant-download1_zps5b7916e2.png" height="200" width="1000">
             <ul>
                 @{
                     if (Session["UserName"] != null)
@@ -20,8 +20,8 @@
                         <li><a href=""><span>@Session["Username"]</span></a></li>
                         <li><a href="/Home/Logout"><span>Logout</span></a></li>
                     }
-                    else
                     {
+                        
                         <li><a href="/Home/Index">Maps</a></li>
                         <li><a href="/Home/Categories">Categories</a></li>
                         <li><a href="/Home/Funedugame">Fun Edu-Game</a></li>
@@ -33,7 +33,7 @@
                         <li><a href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
                     }
 
-                            <!-- Modal -->
+                    <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -68,7 +68,6 @@
     </div>
     </div>
     @RenderBody()
-    </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - Planesia</p>
     </footer>

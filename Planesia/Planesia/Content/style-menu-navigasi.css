@@ -1,22 +1,21 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
 #cssmenu {
-  background: #0dd664;
+  background: #90EE90;
   width: auto;
-  border: 3px dotted rgb(0, 148, 255);
-  border-radius: 5px;
+  border: 3px dashed rgb(4, 105, 96);
+  border-radius: 20px;
+  padding-left: 15px;
 }
 
 #gambarheader {
-    width: 300px;
-    height: 150px;
-    margin-left:100px;
 }
 
 #cssmenu ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-left: 95px;
+  padding-right: 95px;
   line-height: 1;
   display: block;
   zoom: 1;
