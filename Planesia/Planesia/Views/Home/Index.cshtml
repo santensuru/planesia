@@ -1,7 +1,142 @@
 ﻿@{
     ViewBag.Title = "Maps";
 }
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+    var map;
+    var marker = new google.maps.Marker();
+    var selectedPosition = new google.maps.LatLng();
+    $(document).ready(function () {
+        initialize();
+        function initialize()
+        {
+            var mapOptions =
+            {
+                zoom: 5,
+                center: new google.maps.LatLng(-1, +118.75083),
+                panControl: true,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL
+                },
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+            '<div id="bodyContent">' +
+            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+            'sandstone rock formation in the southern part of the ' +
+            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+            'south west of the nearest large town, Alice Springs; 450&#160;km ' +
+            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
+            'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+            'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+            'Aboriginal people of the area. It has many springs, waterholes, ' +
+            'rock caves and ancient paintings. Uluru is listed as a World ' +
+            'Heritage Site.</p>' +
+            '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+            'http://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+            '(last visited June 22, 2009).</p>' +
+            '</div>' +
+            '</div>';
+
+            var infowindowd = new google.maps.InfoWindow
+             ({
+                 content: contentString
+             });
+            
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
+            
+            var markerIconGlastonbury = {
+                url: 'http://img3.wikia.nocookie.net/__cb20120608143358/farmville/images/thumb/f/f9/Mini_Panda-icon.png/70px-Mini_Panda-icon.png',
+                //The size image file.
+                size: new google.maps.Size(100, 100),
+                //The point on the image to measure the anchor from. 0, 0 is the top left.
+                origin: new google.maps.Point(0, 0),
+               //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
+                anchor: new google.maps.Point(189, 116)
+            };
+
+            var markerShapeGlastonbury = {
+                coord: [12, 4, 216, 22, 212, 74, 157, 70, 184, 111, 125, 67, 6, 56],
+                type: 'poly'
+            };
+        
+            var markerPositionGlastonbury = new google.maps.LatLng(0.296953, 114.586458);
+            //Creating the Glastonbury map marker.
+
+            var markerGlastonbury = new google.maps.Marker({
+                            //uses the position set above.
+                position: markerPositionGlastonbury,
+                            //adds the marker to the map.
+                map: map,
+                title: 'Panda',
+                //assigns the icon image set above to the marker.
+                icon: markerIconGlastonbury,
+                //assigns the icon shape set above to the marker.
+                shape: markerShapeGlastonbury,
+                //sets the z-index of the map marker.
+                zIndex: 102
+            });
+
+            google.maps.event.addListener(markerGlastonbury, 'click', function () {
+                infowindowd.open(map, markerGlastonbury);
+            });
+
+        }
+    });
+
+    jQuery(document).ready(function ($) {
+        var options = {
+            $AutoPlay: true,
+            $AutoPlayInterval: 4000,
+            $SlideDuration: 500,
+            $DragOrientation: 3,
+
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $ChanceToShow: 2,
+
+                $Loop: 2,
+                $SpacingX: 3,
+                $SpacingY: 3,
+                $DisplayPieces: 6,
+                $ParkingPosition: 204,
+
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $ChanceToShow: 2,
+                    $AutoCenter: 2,
+                    $Steps: 6
+                }
+            }
+        };
+
+        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+        function ScaleSlider() {
+            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+            if (parentWidth)
+                jssor_slider1.$SetScaleWidth(Math.min(parentWidth, 720));
+            else
+                window.setTimeout(ScaleSlider, 30);
+        }
+
+        ScaleSlider();
+
+        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+            $(window).bind('resize', ScaleSlider);
+        }
+
+    });
+</script>
 
 <div class="row" style="margin-bottom: 25px;">
     @*Kodingan kiri start here*@
@@ -121,7 +256,7 @@
 @*Galeri Foto Kodingan stop here*@
 
 @*Kodingan Google Maps start here*@
-<div sstyle="padding-bottom: 25px">
+<div style="padding-bottom: 25px;">
     <center>
         <div id="map-canvas" style="height:500px; width:80%;"></div>
     </center>

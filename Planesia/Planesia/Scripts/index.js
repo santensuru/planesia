@@ -1,4 +1,4 @@
-﻿//Untuk JavaScript Google Maps
+﻿//Untuk JavaScript Galeri Foto
 
 jQuery(document).ready(function ($) {
     var options = {
@@ -43,6 +43,8 @@ jQuery(document).ready(function ($) {
     }
 
 });
+
+//Untuk JavaScript Galeri Foto
 var map;
 var isPlaced = false;
 var marker = new google.maps.Marker();

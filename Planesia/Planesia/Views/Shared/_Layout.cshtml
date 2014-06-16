@@ -17,51 +17,54 @@
                 @{
                     if (Session["UserName"] != null)
                     {
+                        
                         <li><a href="/Home/Profile"><span>@Session["Username"] Profile</span></a></li>
                         <li><a href="/Home/Logout"><span>Logout</span></a></li>
-                    }
-                    {
+                    }   
+                    <li><a href="/Home/Index">Maps</a></li>
+                    <li><a href="/Home/Funedugame">Fun Edu-Game</a></li>
+                    <li><a href="/Home/Campaign">Campaign</a></li>
+                    <li><a href="/Home/Unique">Unique</a></li>
+                    @*<li><a href="/Home/News">News</a></li>*@
+                    <li><a href="/Home/Contact">Useful Links</a></li>
                         
-                        <li><a href="/Home/Index">Maps</a></li>
-                        <li><a href="/Home/Categories">Categories</a></li>
-                        <li><a href="/Home/Funedugame">Fun Edu-Game</a></li>
-                        <li><a href="/Home/Campaign">Campaign</a></li>
-                        <li><a href="/Home/Unique">Unique</a></li>
-                        <li><a href="/Home/News">News</a></li>
-                        <li><a href="/Home/Contact">Contact</a></li>
+                    if(Session["UserName"]==null)
+                    {
                         <li><a href="/Users/Create">Register</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
                     }
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Planesia login</h4>
-                                </div>
-
-                                <div class="modal-body">
-                                    <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Username" name="username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password" name="password">
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Log in</button>
-                                    </form>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
                 }
             </ul>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Planesia login</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="navbar-form navbar-left" role="search" action="/Home/Login" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Username" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                                </div>
+                                <button type="submit" class="btn btn-default">Log in</button>
+                            </form>
+                            <br>
+                            <br>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <br>
         <br>

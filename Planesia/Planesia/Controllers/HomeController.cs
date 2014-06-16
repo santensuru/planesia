@@ -23,11 +23,6 @@ namespace Planesia.Controllers
             return View();
         }
 
-        public ActionResult Categories()
-        {
-            return View();
-        }
-
         public ActionResult Funedugame()
         {
             return View();
@@ -83,10 +78,12 @@ namespace Planesia.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login([Bind(Include = "Username,Password")] User user)
+        public ActionResult Login(FormCollection form)
         {
+            string username = form.Get("username");
+            string password = form.Get("password");
             var query = from u in db.Users
-                        where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
+                        where u.Username.Equals(username) && u.Password.Equals(password)
                         select u;
 
             foreach(var item in query)
