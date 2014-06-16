@@ -7,7 +7,7 @@
       <Diagram DiagramId="6fb9fb5a9bac49b18697aa52267f520d" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="PlanesiaDBsModel.Campaign" Width="1.5" PointX="3.25" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="PlanesiaDBsModel.Fauna" Width="1.5" PointX="5.625" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PlanesiaDBsModel.Flora" Width="1.5" PointX="3.625" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlanesiaDBsModel.Flora" Width="1.5" PointX="3.375" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PlanesiaDBsModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="PlanesiaDBsModel.FK_CampaignUser" ManuallyRouted="false" />
         <AssociationConnector Association="PlanesiaDBsModel.FK_FaunaUser" ManuallyRouted="false" />

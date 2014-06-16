@@ -42,7 +42,7 @@
           <Property Name="FloraLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FloraDate" Type="date" />
           <Property Name="FloraDistribution" Type="varchar" MaxLength="50" />
-          <Property Name="FloraDiscoverer" Type="varchar" MaxLength="50" />
+          <Property Name="FloraReference" Type="varchar" MaxLength="50" />
           <Property Name="FloraOtherDescription" Type="varchar" MaxLength="50" />
           <Property Name="FloraPhoto" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
@@ -164,7 +164,6 @@
           <Property Name="FloraLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraDate" Type="DateTime" Precision="0" />
           <Property Name="FloraDistribution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FloraDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
@@ -172,6 +171,7 @@
           <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
           <Property Name="FloraLongitude" Type="Double" />
           <Property Name="FloraLatitude" Type="Double" />
+          <Property Name="FloraReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -286,14 +286,14 @@
     <EntitySetMapping Name="Floras">
       <EntityTypeMapping TypeName="IsTypeOf(PlanesiaDBsModel.Flora)">
         <MappingFragment StoreEntitySet="Floras">
-          <ScalarProperty Name="FloraLatitude" ColumnName="FloraLatitude" />
+          <ScalarProperty Name="FloraReference" ColumnName="FloraReference" />
+                <ScalarProperty Name="FloraLatitude" ColumnName="FloraLatitude" />
                 <ScalarProperty Name="FloraLongitude" ColumnName="FloraLongitude" />
                 <ScalarProperty Name="FloraId" ColumnName="FloraId" />
           <ScalarProperty Name="FloraName" ColumnName="FloraName" />
           <ScalarProperty Name="FloraLatinName" ColumnName="FloraLatinName" />
           <ScalarProperty Name="FloraDate" ColumnName="FloraDate" />
           <ScalarProperty Name="FloraDistribution" ColumnName="FloraDistribution" />
-          <ScalarProperty Name="FloraDiscoverer" ColumnName="FloraDiscoverer" />
           <ScalarProperty Name="FloraOtherDescription" ColumnName="FloraOtherDescription" />
           <ScalarProperty Name="FloraPhoto" ColumnName="FloraPhoto" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />

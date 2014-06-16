@@ -15,7 +15,7 @@ namespace Planesia.Controllers
         
         public ActionResult Index()
         {
-            return View();
+            return View(db.Floras.ToList());
         }
 
         public ActionResult Galerifoto()
@@ -142,7 +142,7 @@ namespace Planesia.Controllers
                 Response.Redirect("Error");
             }
             return View();
-        }
+        }    
 
         [HttpPost]
         public ActionResult AddFlora(FormCollection form)
@@ -153,7 +153,7 @@ namespace Planesia.Controllers
             //flora.FloraLongitude = float.Parse(form.Get("longitude"));
             //flora.FloraLatitude = float.Parse(form.Get("latitude"));
             flora.FloraOtherDescription = form.Get("description");
-            flora.FloraDiscoverer = form.Get("discoverer");
+            flora.FloraReference = form.Get("discoverer");
             flora.FloraPhoto = form.Get("photolink");
             try
             {
