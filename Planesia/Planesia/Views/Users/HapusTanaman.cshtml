@@ -1,0 +1,106 @@
+﻿@model Planesia.Models.Flora
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Flora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraLatinName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraLatinName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraDistribution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraDistribution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraDiscoverer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraDiscoverer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraOtherDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraOtherDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraLongitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraLongitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloraLatitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloraLatitude)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

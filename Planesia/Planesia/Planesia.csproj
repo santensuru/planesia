@@ -258,6 +258,8 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitTest\CampaignRepositoryTest.cs" />
+    <Compile Include="UnitTest\FaunaRepositoryTest.cs" />
+    <Compile Include="UnitTest\FloraRepositoryTest.cs" />
     <Compile Include="UnitTest\UserRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,7 +328,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Home\Unique.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Funedugame.cshtml" />
@@ -341,6 +342,9 @@
     <Content Include="Views\Home\AddFauna.cshtml" />
     <Content Include="Views\Home\AddFlora.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Users\EditTanaman.cshtml" />
+    <Content Include="Views\Users\HapusTanaman.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
