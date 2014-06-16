@@ -21,7 +21,7 @@ namespace Planesia.Controllers
         
         public ActionResult Index()
         {
-            return View();
+            return View(fns.GetAllFaunas());
         }
 
         public ActionResult Galerifoto()
@@ -112,7 +112,7 @@ namespace Planesia.Controllers
 
             foreach(var item in query)
             {
-                Session["UserId"] = item.Username.ToString();
+                Session["UserId"] = item.UserId;
                 Session["UserName"] = item.Username.ToString();
             }
             return RedirectToAction("Index");
@@ -177,11 +177,13 @@ namespace Planesia.Controllers
                 Fauna fauna = new Fauna();
                 fauna.FaunaName = form.Get("name");
                 fauna.FaunaLatinName = form.Get("latin");
-                //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
-                //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+                fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+                fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
                 fauna.FaunaOtherDescription = form.Get("description");
-                fauna.FaunaDiscoverer = form.Get("discoverer");
+                fauna.FaunaReference = form.Get("reference");
                 fauna.FaunaPhoto = form.Get("photolink");
+                fauna.FaunaDate = DateTime.Now;
+                fauna.UserId = int.Parse(Session["UserId"].ToString());
                 try
                 {
                     fns.AddFauna(fauna);
@@ -212,19 +214,22 @@ namespace Planesia.Controllers
                 flora.FloraLongitude = float.Parse(form.Get("longitude"));
                 flora.FloraLatitude = float.Parse(form.Get("latitude"));
                 flora.FloraOtherDescription = form.Get("description");
-                flora.FloraDiscoverer = form.Get("discoverer");
+                flora.FloraReference = form.Get("reference");
                 flora.FloraPhoto = form.Get("photolink");
+                flora.FloraDate = DateTime.Now;
+                flora.UserId = int.Parse(Session["UserId"].ToString());
                 try
                 {
                     fls.AddFlora(flora);
-                    //db.Floras.Add(flora);
+                    //db.Faunas.Add(fauna);
                     //db.SaveChanges();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Response.Redirect("ErrorPage");
+                    Response.Write("<script>alert(" + ex.Message + ")</script>");
+                    Response.Redirect("Error");
                 }
-                return View("Index");
+                return View();
             }
             else
             {

@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="6fb9fb5a9bac49b18697aa52267f520d" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="PlanesiaDBsModel.Campaign" Width="1.5" PointX="3.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="PlanesiaDBsModel.Fauna" Width="1.5" PointX="5.375" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="PlanesiaDBsModel.Flora" Width="1.5" PointX="3.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlanesiaDBsModel.Fauna" Width="1.5" PointX="5.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlanesiaDBsModel.Flora" Width="1.75" PointX="3.25" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PlanesiaDBsModel.User" Width="1.5" PointX="1.125" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="PlanesiaDBsModel.FK_CampaignUser" ManuallyRouted="false" />
         <AssociationConnector Association="PlanesiaDBsModel.FK_FaunaUser" ManuallyRouted="false" />
