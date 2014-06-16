@@ -258,6 +258,8 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitTest\CampaignRepositoryTest.cs" />
+    <Compile Include="UnitTest\FaunaRepositoryTest.cs" />
+    <Compile Include="UnitTest\FloraRepositoryTest.cs" />
     <Compile Include="UnitTest\UserRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
