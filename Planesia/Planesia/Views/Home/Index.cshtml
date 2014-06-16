@@ -213,15 +213,17 @@
                     </label>
                 </div>
             </form>
-            <br>
-            <div class="container">
-                <a href="/Home/AddFauna" class="btn btn-default">Add fauna to the maps</a>
-            </div>
-            <br>
-            <div class="container">
-                <a href="/Home/AddFlora" class="btn btn-default">Add flora to the maps</a>
-            </div>
-            <br>
+            @if (Session["UserName"] != null) {
+                <br>
+                <div class="container">
+                    <a href="/Home/AddFauna" class="btn btn-default">Add fauna to the maps</a>
+                </div>
+                <br>
+                <div class="container">
+                    <a href="/Home/AddFlora" class="btn btn-default">Add flora to the maps</a>
+                </div>
+                <br>
+            }
         </div>
     </div>
     @*Kodingan kiri stop here*@

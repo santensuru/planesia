@@ -19,16 +19,14 @@ namespace Planesia.Models
         public string FloraLatinName { get; set; }
         public Nullable<System.DateTime> FloraDate { get; set; }
         public string FloraDistribution { get; set; }
+        public string FloraDiscoverer { get; set; }
         public string FloraOtherDescription { get; set; }
         public string FloraPhoto { get; set; }
         public Nullable<int> UserId { get; set; }
         public string FloraStatus { get; set; }
         public Nullable<double> FloraLongitude { get; set; }
         public Nullable<double> FloraLatitude { get; set; }
-        public string FloraReference { get; set; }
-        public string FloraDiscoverer { get; set; }
         public string KomentarFlora { get; set; }
-        public string FloraReference1 { get; set; }
     
         public virtual User User { get; set; }
     }

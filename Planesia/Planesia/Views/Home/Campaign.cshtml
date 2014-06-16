@@ -52,5 +52,6 @@
     }
 
 </table>
-
+@if (Session["UserName"] != null) {
 <p>    Create Your Campaign  @Html.ActionLink("Here", "CreateCampaign")        </p>
+}

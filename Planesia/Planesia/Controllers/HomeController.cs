@@ -6,19 +6,30 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using Planesia.Models;
+using Planesia.Service;
+using Planesia.Repository;
 
 namespace Planesia.Controllers
 {
     public class HomeController : Controller
     {
-        private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        //private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        CampaignService cs = new CampaignService();
+        UserService us = new UserService();
+        FloraService fls = new FloraService();
+        FaunaService fns = new FaunaService();
         
         public ActionResult Index()
         {
-            return View(db.Floras.ToList());
+            return View();
         }
 
         public ActionResult Galerifoto()
+        {
+            return View();
+        }
+
+        public ActionResult Categories()
         {
             return View();
         }
@@ -30,28 +41,43 @@ namespace Planesia.Controllers
 
         public ActionResult Campaign()
         {
-            return View(db.Campaigns.ToList());
+            //return View(db.Campaigns.ToList());
+            return View(cs.GetAllCampaigns());
         }
 
         public ActionResult CreateCampaign()
         {
-            return View();
+            if (Session["UserName"] != null)
+                return View();
+            else
+                return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateCampaign([Bind(Include = "CampaignId, CampaignName, CampaignDescription, CampaignDate, UserId, CampaignStatus")]  Campaign campaign)
         {
-            if (ModelState.IsValid)
+            if (Session["UserName"] != null)
             {
-                campaign.CampaignId = db.Campaigns.Count() + 1;
-                campaign.UserId = 1;
-                campaign.CampaignStatus = "not";
-                db.Campaigns.Add(campaign);
-                db.SaveChanges();
-                return RedirectToAction("Campaign");
+                string c = Session["UserName"].ToString();
+                if (ModelState.IsValid)
+                {
+                    campaign.CampaignId = cs.GetAllCampaigns().Count() + 1;
+                    User user = (from u in us.GetAllUsers()
+                                 where u.Username.Equals(c)
+                                 select u).FirstOrDefault<User>();
+                    campaign.UserId = user.UserId;
+                    campaign.CampaignStatus = "not";
+                    cs.AddCampaign(campaign);
+                    //db.Campaigns.Add(campaign);
+                    //db.SaveChanges();
+                    return RedirectToAction("Campaign");
+                }
+                return View(campaign);
             }
-            return View(campaign);
+            else {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Unique()
@@ -78,12 +104,10 @@ namespace Planesia.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(FormCollection form)
+        public ActionResult Login([Bind(Include = "Username,Password")] User user)
         {
-            string username = form.Get("username");
-            string password = form.Get("password");
-            var query = from u in db.Users
-                        where u.Username.Equals(username) && u.Password.Equals(password)
+            var query = from u in us.GetAllUsers()
+                        where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
                         select u;
 
             foreach(var item in query)
@@ -107,64 +131,101 @@ namespace Planesia.Controllers
 
         public ActionResult Profile()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult AddFauna()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult AddFlora()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public ActionResult AddFauna(FormCollection form)
         {
-            Fauna fauna = new Fauna();
-            fauna.FaunaName = form.Get("name");
-            fauna.FaunaLatinName = form.Get("latin");
-            //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
-            //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
-            fauna.FaunaOtherDescription = form.Get("description");
-            fauna.FaunaDiscoverer = form.Get("discoverer");
-            fauna.FaunaPhoto = form.Get("photolink");
-            try
+            if (Session["UserName"] != null)
             {
-                db.Faunas.Add(fauna);
-                db.SaveChanges();
+                Fauna fauna = new Fauna();
+                fauna.FaunaName = form.Get("name");
+                fauna.FaunaLatinName = form.Get("latin");
+                //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+                //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+                fauna.FaunaOtherDescription = form.Get("description");
+                fauna.FaunaDiscoverer = form.Get("discoverer");
+                fauna.FaunaPhoto = form.Get("photolink");
+                try
+                {
+                    fns.AddFauna(fauna);
+                    //db.Faunas.Add(fauna);
+                    //db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert(" + ex.Message + ")</script>");
+                    Response.Redirect("Error");
+                }
+                return View();
             }
-            catch (Exception ex)
+            else
             {
-                Response.Write("<script>alert(" + ex.Message + ")</script>");
-                Response.Redirect("Error");
+                return RedirectToAction("Index");
             }
-            return View();
-        }    
+        }
 
         [HttpPost]
         public ActionResult AddFlora(FormCollection form)
         {
-            Flora flora = new Flora();
-            flora.FloraName= form.Get("name");
-            flora.FloraLatinName = form.Get("latin");
-            //flora.FloraLongitude = float.Parse(form.Get("longitude"));
-            //flora.FloraLatitude = float.Parse(form.Get("latitude"));
-            flora.FloraOtherDescription = form.Get("description");
-            flora.FloraReference = form.Get("discoverer");
-            flora.FloraPhoto = form.Get("photolink");
-            try
+            if (Session["UserName"] != null)
             {
-                db.Floras.Add(flora);
-                db.SaveChanges();
+                Flora flora = new Flora();
+                flora.FloraName = form.Get("name");
+                flora.FloraLatinName = form.Get("latin");
+                //flora.FloraLongitude = float.Parse(form.Get("longitude"));
+                //flora.FloraLatitude = float.Parse(form.Get("latitude"));
+                flora.FloraOtherDescription = form.Get("description");
+                flora.FloraDiscoverer = form.Get("discoverer");
+                flora.FloraPhoto = form.Get("photolink");
+                try
+                {
+                    fls.AddFlora(flora);
+                    //db.Floras.Add(flora);
+                    //db.SaveChanges();
+                }
+                catch
+                {
+                    Response.Redirect("ErrorPage");
+                }
+                return View();
             }
-            catch
+            else
             {
-                Response.Redirect("ErrorPage");
+                return RedirectToAction("Index");
             }
-            return View();
         }
     }
 }

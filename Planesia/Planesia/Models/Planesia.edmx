@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PlanesiaDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PlanesiaDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Campaigns">
           <Key>
             <PropertyRef Name="CampaignId" />
@@ -29,7 +29,7 @@
           <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="50" />
           <Property Name="FaunaPhoto" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
-          <Property Name="FaunaStatus" Type="int" />
+          <Property Name="FaunaStatus" Type="varchar" MaxLength="50" />
           <Property Name="FaunaLongitude" Type="float" />
           <Property Name="FaunaLatitude" Type="float" />
           <Property Name="Komentar" Type="nchar" MaxLength="160" />
@@ -43,11 +43,11 @@
           <Property Name="FloraLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FloraDate" Type="date" />
           <Property Name="FloraDistribution" Type="varchar" MaxLength="50" />
-          <Property Name="FloraReference" Type="varchar" MaxLength="50" />
+          <Property Name="FloraDiscoverer" Type="varchar" MaxLength="50" />
           <Property Name="FloraOtherDescription" Type="varchar" MaxLength="50" />
           <Property Name="FloraPhoto" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
-          <Property Name="FloraStatus" Type="int" />
+          <Property Name="FloraStatus" Type="varchar" MaxLength="50" />
           <Property Name="FloraLongitude" Type="float" />
           <Property Name="FloraLatitude" Type="float" />
           <Property Name="KomentarFlora" Type="nchar" MaxLength="160" />
@@ -152,7 +152,7 @@
           <Property Name="FaunaOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="FaunaStatus" Type="String" />
+          <Property Name="FaunaStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FaunaUser" FromRole="Fauna" ToRole="User" />
           <Property Name="FaunaLongitude" Type="Double" />
           <Property Name="FaunaLatitude" Type="Double" />
@@ -167,17 +167,15 @@
           <Property Name="FloraLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraDate" Type="DateTime" Precision="0" />
           <Property Name="FloraDistribution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="FloraStatus" Type="String" />
+          <Property Name="FloraStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
           <Property Name="FloraLongitude" Type="Double" />
           <Property Name="FloraLatitude" Type="Double" />
-          <Property Name="FloraReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FloraDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="KomentarFlora" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
-          <Property Name="FloraReference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -194,7 +192,7 @@
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" />
+          <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="Campaigns" Relationship="Self.FK_CampaignUser" FromRole="User" ToRole="Campaign" />
           <NavigationProperty Name="Faunas" Relationship="Self.FK_FaunaUser" FromRole="User" ToRole="Fauna" />
           <NavigationProperty Name="Floras" Relationship="Self.FK_FloraUser" FromRole="User" ToRole="Flora" />
@@ -293,8 +291,7 @@
     <EntitySetMapping Name="Floras">
       <EntityTypeMapping TypeName="IsTypeOf(PlanesiaDBsModel.Flora)">
         <MappingFragment StoreEntitySet="Floras">
-                <ScalarProperty Name="FloraReference1" ColumnName="FloraReference" />
-                <ScalarProperty Name="KomentarFlora" ColumnName="KomentarFlora" />
+          <ScalarProperty Name="KomentarFlora" ColumnName="KomentarFlora" />
                 <ScalarProperty Name="FloraLatitude" ColumnName="FloraLatitude" />
                 <ScalarProperty Name="FloraLongitude" ColumnName="FloraLongitude" />
                 <ScalarProperty Name="FloraId" ColumnName="FloraId" />
@@ -302,6 +299,7 @@
           <ScalarProperty Name="FloraLatinName" ColumnName="FloraLatinName" />
           <ScalarProperty Name="FloraDate" ColumnName="FloraDate" />
           <ScalarProperty Name="FloraDistribution" ColumnName="FloraDistribution" />
+          <ScalarProperty Name="FloraDiscoverer" ColumnName="FloraDiscoverer" />
           <ScalarProperty Name="FloraOtherDescription" ColumnName="FloraOtherDescription" />
           <ScalarProperty Name="FloraPhoto" ColumnName="FloraPhoto" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
