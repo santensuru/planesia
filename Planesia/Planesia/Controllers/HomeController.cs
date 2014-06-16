@@ -131,66 +131,101 @@ namespace Planesia.Controllers
 
         public ActionResult Profile()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult AddFauna()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult AddFlora()
         {
-            return View();
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public ActionResult AddFauna(FormCollection form)
         {
-            Fauna fauna = new Fauna();
-            fauna.FaunaName = form.Get("name");
-            fauna.FaunaLatinName = form.Get("latin");
-            //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
-            //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
-            fauna.FaunaOtherDescription = form.Get("description");
-            fauna.FaunaDiscoverer = form.Get("discoverer");
-            fauna.FaunaPhoto = form.Get("photolink");
-            try
+            if (Session["UserName"] != null)
             {
-                fns.AddFauna(fauna);
-                //db.Faunas.Add(fauna);
-                //db.SaveChanges();
+                Fauna fauna = new Fauna();
+                fauna.FaunaName = form.Get("name");
+                fauna.FaunaLatinName = form.Get("latin");
+                //fauna.FaunaLongitude = float.Parse(form.Get("longitude"));
+                //fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
+                fauna.FaunaOtherDescription = form.Get("description");
+                fauna.FaunaDiscoverer = form.Get("discoverer");
+                fauna.FaunaPhoto = form.Get("photolink");
+                try
+                {
+                    fns.AddFauna(fauna);
+                    //db.Faunas.Add(fauna);
+                    //db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert(" + ex.Message + ")</script>");
+                    Response.Redirect("Error");
+                }
+                return View();
             }
-            catch (Exception ex)
+            else
             {
-                Response.Write("<script>alert(" + ex.Message + ")</script>");
-                Response.Redirect("Error");
+                return RedirectToAction("Index");
             }
-            return View();
         }
 
         [HttpPost]
         public ActionResult AddFlora(FormCollection form)
         {
-            Flora flora = new Flora();
-            flora.FloraName= form.Get("name");
-            flora.FloraLatinName = form.Get("latin");
-            //flora.FloraLongitude = float.Parse(form.Get("longitude"));
-            //flora.FloraLatitude = float.Parse(form.Get("latitude"));
-            flora.FloraOtherDescription = form.Get("description");
-            flora.FloraDiscoverer = form.Get("discoverer");
-            flora.FloraPhoto = form.Get("photolink");
-            try
+            if (Session["UserName"] != null)
             {
-                fls.AddFlora(flora);
-                //db.Floras.Add(flora);
-                //db.SaveChanges();
+                Flora flora = new Flora();
+                flora.FloraName = form.Get("name");
+                flora.FloraLatinName = form.Get("latin");
+                //flora.FloraLongitude = float.Parse(form.Get("longitude"));
+                //flora.FloraLatitude = float.Parse(form.Get("latitude"));
+                flora.FloraOtherDescription = form.Get("description");
+                flora.FloraDiscoverer = form.Get("discoverer");
+                flora.FloraPhoto = form.Get("photolink");
+                try
+                {
+                    fls.AddFlora(flora);
+                    //db.Floras.Add(flora);
+                    //db.SaveChanges();
+                }
+                catch
+                {
+                    Response.Redirect("ErrorPage");
+                }
+                return View();
             }
-            catch
+            else
             {
-                Response.Redirect("ErrorPage");
+                return RedirectToAction("Index");
             }
-            return View();
         }
     }
 }

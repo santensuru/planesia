@@ -32,7 +32,7 @@ namespace Planesia.Models
         public string Gender { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Status { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual ICollection<Campaign> Campaigns { get; set; }
         public virtual ICollection<Fauna> Faunas { get; set; }

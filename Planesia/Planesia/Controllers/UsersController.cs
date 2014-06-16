@@ -21,32 +21,70 @@ namespace Planesia.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(us.GetAllUsers());
+            if (Session["UserName"] != null)
+            {
+                string c = Session["UserName"].ToString();
+                User user = (from u in us.GetAllUsers()
+                             where u.Username.Equals(c)
+                             select u).FirstOrDefault<User>();
+                int status = user.Status.GetValueOrDefault();
+                if (status == 1)
+                {
+                    return View(us.GetAllUsers());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
             //return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //User user = db.Users.Find(id);
 
-            User user = us.GetUserById(id.GetValueOrDefault());
-
-            if (user == null)
+            if (Session["UserName"] != null)
             {
-                return HttpNotFound();
+                if (id == null)
+                {
+                    string c = Session["UserName"].ToString();
+                    User user = (from u in us.GetAllUsers()
+                                 where u.Username.Equals(c)
+                                 select u).FirstOrDefault<User>();
+                    id = user.UserId;
+                }
+                //User user = db.Users.Find(id);
+
+                User user1 = us.GetUserById(id.GetValueOrDefault());
+
+                if (user1 == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user1);
             }
-            return View(user);
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Users/Create
         public ActionResult Create()
         {
-            return View();
+            if (Session["UserName"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: Users/Create
@@ -56,35 +94,46 @@ namespace Planesia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,Email,Birthday,Phone,Address,Photo,Gender,Username,Password,Status")] User user)
         {
-            if (ModelState.IsValid)
+            if (Session["UserName"] == null)
             {
-                //db.Users.Add(user);
-                //db.SaveChanges();
-
-                us.AddUser(user);
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    //db.Users.Add(user);
+                    //db.SaveChanges();
+                    user.Status = 0;
+                    us.AddUser(user);
+                }
+                return View("Index", "Home");
             }
-
-            return View(user);
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["UserName"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                //User user = db.Users.Find(id);
+
+                User user = us.GetUserById(id.GetValueOrDefault());
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);
             }
-            //User user = db.Users.Find(id);
-
-            User user = us.GetUserById(id.GetValueOrDefault());
-
-            if (user == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
             }
-            return View(user);
         }
 
         // POST: Users/Edit/5
@@ -94,34 +143,61 @@ namespace Planesia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,Email,Birthday,Phone,Address,Photo,Gender,Username,Password,Status")] User user)
         {
-            if (ModelState.IsValid)
+            if (Session["UserName"] != null)
             {
-                //db.Entry(user).State = EntityState.Modified;
-                //db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    //db.Entry(user).State = EntityState.Modified;
+                    //db.SaveChanges();
 
-                us.UpdateUser(user);
+                    us.UpdateUser(user);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Profile", "Home");
+                }
+                return View(user);
             }
-            return View(user);
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["UserName"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                string c = Session["UserName"].ToString();
+                User user = (from u in us.GetAllUsers()
+                             where u.Username.Equals(c)
+                             select u).FirstOrDefault<User>();
+                int status = user.Status.GetValueOrDefault();
+                if (status == 1)
+                {
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    //User user = db.Users.Find(id);
+
+                    User user1 = us.GetUserById(id.GetValueOrDefault());
+
+                    if (user1 == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(user1);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            //User user = db.Users.Find(id);
-
-            User user = us.GetUserById(id.GetValueOrDefault());
-
-            if (user == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
             }
-            return View(user);
+            //return View(user);
         }
 
         // POST: Users/Delete/5
@@ -129,13 +205,32 @@ namespace Planesia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //User user = db.Users.Find(id);
-            //db.Users.Remove(user);
-            //db.SaveChanges();
+            if (Session["UserName"] != null)
+            {
+                string c = Session["UserName"].ToString();
+                User user = (from u in us.GetAllUsers()
+                             where u.Username.Equals(c)
+                             select u).FirstOrDefault<User>();
+                int status = user.Status.GetValueOrDefault();
+                if (status == 1)
+                {
+                    //User user = db.Users.Find(id);
+                    //db.Users.Remove(user);
+                    //db.SaveChanges();
 
-            us.DeleteUser(id);
+                    us.DeleteUser(id);
 
-            return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         //protected override void Dispose(bool disposing)
