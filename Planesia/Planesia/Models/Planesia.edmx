@@ -29,9 +29,10 @@
           <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="50" />
           <Property Name="FaunaPhoto" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
-          <Property Name="FaunaStatus" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaStatus" Type="int" />
           <Property Name="FaunaLongitude" Type="float" />
           <Property Name="FaunaLatitude" Type="float" />
+          <Property Name="Komentar" Type="nchar" MaxLength="160" />
         </EntityType>
         <EntityType Name="Floras">
           <Key>
@@ -46,9 +47,10 @@
           <Property Name="FloraOtherDescription" Type="varchar" MaxLength="50" />
           <Property Name="FloraPhoto" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
-          <Property Name="FloraStatus" Type="varchar" MaxLength="50" />
+          <Property Name="FloraStatus" Type="int" />
           <Property Name="FloraLongitude" Type="float" />
           <Property Name="FloraLatitude" Type="float" />
+          <Property Name="KomentarFlora" Type="nchar" MaxLength="160" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -65,7 +67,7 @@
           <Property Name="Gender" Type="varchar" MaxLength="50" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
-          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <Association Name="FK_CampaignUser">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -150,10 +152,11 @@
           <Property Name="FaunaOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="FaunaStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaStatus" Type="String" />
           <NavigationProperty Name="User" Relationship="Self.FK_FaunaUser" FromRole="Fauna" ToRole="User" />
           <Property Name="FaunaLongitude" Type="Double" />
           <Property Name="FaunaLatitude" Type="Double" />
+          <Property Name="Komentar" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Flora">
           <Key>
@@ -167,11 +170,14 @@
           <Property Name="FloraOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="FloraStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraStatus" Type="String" />
           <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
           <Property Name="FloraLongitude" Type="Double" />
           <Property Name="FloraLatitude" Type="Double" />
           <Property Name="FloraReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraDiscoverer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KomentarFlora" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
+          <Property Name="FloraReference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -188,7 +194,7 @@
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" />
           <NavigationProperty Name="Campaigns" Relationship="Self.FK_CampaignUser" FromRole="User" ToRole="Campaign" />
           <NavigationProperty Name="Faunas" Relationship="Self.FK_FaunaUser" FromRole="User" ToRole="Fauna" />
           <NavigationProperty Name="Floras" Relationship="Self.FK_FloraUser" FromRole="User" ToRole="Flora" />
@@ -268,7 +274,8 @@
     <EntitySetMapping Name="Faunas">
       <EntityTypeMapping TypeName="IsTypeOf(PlanesiaDBsModel.Fauna)">
         <MappingFragment StoreEntitySet="Faunas">
-          <ScalarProperty Name="FaunaLatitude" ColumnName="FaunaLatitude" />
+          <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="FaunaLatitude" ColumnName="FaunaLatitude" />
                 <ScalarProperty Name="FaunaLongitude" ColumnName="FaunaLongitude" />
                 <ScalarProperty Name="FaunaId" ColumnName="FaunaId" />
           <ScalarProperty Name="FaunaName" ColumnName="FaunaName" />
@@ -286,7 +293,8 @@
     <EntitySetMapping Name="Floras">
       <EntityTypeMapping TypeName="IsTypeOf(PlanesiaDBsModel.Flora)">
         <MappingFragment StoreEntitySet="Floras">
-          <ScalarProperty Name="FloraReference" ColumnName="FloraReference" />
+                <ScalarProperty Name="FloraReference1" ColumnName="FloraReference" />
+                <ScalarProperty Name="KomentarFlora" ColumnName="KomentarFlora" />
                 <ScalarProperty Name="FloraLatitude" ColumnName="FloraLatitude" />
                 <ScalarProperty Name="FloraLongitude" ColumnName="FloraLongitude" />
                 <ScalarProperty Name="FloraId" ColumnName="FloraId" />

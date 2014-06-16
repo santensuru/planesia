@@ -3,7 +3,6 @@
 }
 @model IEnumerable<Planesia.Models.Flora>
 
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script>
     var map;
@@ -91,9 +90,6 @@
                  content: contentString
              });
             
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
             
             var markerIconGlastonbury = {
                 url: 'http://img3.wikia.nocookie.net/__cb20120608143358/farmville/images/thumb/f/f9/Mini_Panda-icon.png/70px-Mini_Panda-icon.png',

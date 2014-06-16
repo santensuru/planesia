@@ -26,6 +26,9 @@ namespace Planesia.Models
         public Nullable<double> FloraLongitude { get; set; }
         public Nullable<double> FloraLatitude { get; set; }
         public string FloraReference { get; set; }
+        public string FloraDiscoverer { get; set; }
+        public string KomentarFlora { get; set; }
+        public string FloraReference1 { get; set; }
     
         public virtual User User { get; set; }
     }
