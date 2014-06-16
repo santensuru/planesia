@@ -21,7 +21,9 @@ namespace Planesia.Controllers
         
         public ActionResult Index()
         {
-            return View(fns.GetAllFaunas());
+            ViewBag.Faunas = fns.GetAllFaunas();
+            ViewBag.Floras = fls.GetAllFloras();
+            return View();
         }
 
         public ActionResult Galerifoto()

@@ -1,8 +1,6 @@
 ﻿@{
     ViewBag.Title = "Maps";
 }
-@model IEnumerable<Planesia.Models.Fauna>
-
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
         var map;
@@ -15,6 +13,7 @@
                 var mapOptions =
                 {
                     zoom: 5,
+                    minZoom : 5,
                     center: new google.maps.LatLng(-1, +118.75083),
                     panControl: true,
                     zoomControl: true,
@@ -26,7 +25,7 @@
                 };
                 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-                @foreach(var item in Model)
+                @foreach(var item in ViewBag.Faunas)
                 {
                     <text>
                         var latitude = @item.FaunaLatitude;
@@ -35,6 +34,17 @@
                             position: new google.maps.LatLng(latitude , longitude),
                             map: map
                         });
+                </text>
+                }
+                @foreach(var item in ViewBag.Floras)
+                {
+                    <text>
+                        var latitude = @item.FloraLatitude;
+                        var longitude = @item.FloraLongitude;
+                        var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(latitude , longitude),
+                        map: map
+                    });
                     </text>
                 }
                 
