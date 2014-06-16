@@ -6,12 +6,18 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using Planesia.Models;
+using Planesia.Service;
+using Planesia.Repository;
 
 namespace Planesia.Controllers
 {
     public class HomeController : Controller
     {
-        private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        //private PlanesiaDBsEntities db = new PlanesiaDBsEntities();
+        CampaignService cs = new CampaignService();
+        UserService us = new UserService();
+        FloraService fls = new FloraService();
+        FaunaService fns = new FaunaService();
         
         public ActionResult Index()
         {
@@ -35,7 +41,8 @@ namespace Planesia.Controllers
 
         public ActionResult Campaign()
         {
-            return View(db.Campaigns.ToList());
+            //return View(db.Campaigns.ToList());
+            return View(cs.GetAllCampaigns());
         }
 
         public ActionResult CreateCampaign()
@@ -55,14 +62,15 @@ namespace Planesia.Controllers
                 string c = Session["UserName"].ToString();
                 if (ModelState.IsValid)
                 {
-                    campaign.CampaignId = db.Campaigns.Count() + 1;
-                    User user = (from u in db.Users
+                    campaign.CampaignId = cs.GetAllCampaigns().Count() + 1;
+                    User user = (from u in us.GetAllUsers()
                                  where u.Username.Equals(c)
                                  select u).FirstOrDefault<User>();
                     campaign.UserId = user.UserId;
                     campaign.CampaignStatus = "not";
-                    db.Campaigns.Add(campaign);
-                    db.SaveChanges();
+                    cs.AddCampaign(campaign);
+                    //db.Campaigns.Add(campaign);
+                    //db.SaveChanges();
                     return RedirectToAction("Campaign");
                 }
                 return View(campaign);
@@ -98,7 +106,7 @@ namespace Planesia.Controllers
         [HttpPost]
         public ActionResult Login([Bind(Include = "Username,Password")] User user)
         {
-            var query = from u in db.Users
+            var query = from u in us.GetAllUsers()
                         where u.Username.Equals(user.Username) && u.Password.Equals(user.Password)
                         select u;
 
@@ -149,8 +157,9 @@ namespace Planesia.Controllers
             fauna.FaunaPhoto = form.Get("photolink");
             try
             {
-                db.Faunas.Add(fauna);
-                db.SaveChanges();
+                fns.AddFauna(fauna);
+                //db.Faunas.Add(fauna);
+                //db.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -173,8 +182,9 @@ namespace Planesia.Controllers
             flora.FloraPhoto = form.Get("photolink");
             try
             {
-                db.Floras.Add(flora);
-                db.SaveChanges();
+                fls.AddFlora(flora);
+                //db.Floras.Add(flora);
+                //db.SaveChanges();
             }
             catch
             {
