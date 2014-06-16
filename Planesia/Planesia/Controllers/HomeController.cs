@@ -40,23 +40,36 @@ namespace Planesia.Controllers
 
         public ActionResult CreateCampaign()
         {
-            return View();
+            if (Session["UserName"] != null)
+                return View();
+            else
+                return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateCampaign([Bind(Include = "CampaignId, CampaignName, CampaignDescription, CampaignDate, UserId, CampaignStatus")]  Campaign campaign)
         {
-            if (ModelState.IsValid)
+            if (Session["UserName"] != null)
             {
-                campaign.CampaignId = db.Campaigns.Count() + 1;
-                campaign.UserId = 1;
-                campaign.CampaignStatus = "not";
-                db.Campaigns.Add(campaign);
-                db.SaveChanges();
-                return RedirectToAction("Campaign");
+                string c = Session["UserName"].ToString();
+                if (ModelState.IsValid)
+                {
+                    campaign.CampaignId = db.Campaigns.Count() + 1;
+                    User user = (from u in db.Users
+                                 where u.Username.Equals(c)
+                                 select u).FirstOrDefault<User>();
+                    campaign.UserId = user.UserId;
+                    campaign.CampaignStatus = "not";
+                    db.Campaigns.Add(campaign);
+                    db.SaveChanges();
+                    return RedirectToAction("Campaign");
+                }
+                return View(campaign);
             }
-            return View(campaign);
+            else {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Unique()
