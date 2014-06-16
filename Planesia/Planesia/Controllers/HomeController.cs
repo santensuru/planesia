@@ -145,6 +145,10 @@ namespace Planesia.Controllers
         {
             if (Session["UserName"] != null)
             {
+                List<Flora> floras = fls.GetAllFloras();
+                List<Fauna> faunas = fns.GetAllFaunas();
+                ViewBag.floras = floras;
+                ViewBag.fauna = faunas;
                 return View();
             }
             else
@@ -205,8 +209,8 @@ namespace Planesia.Controllers
                 Flora flora = new Flora();
                 flora.FloraName = form.Get("name");
                 flora.FloraLatinName = form.Get("latin");
-                //flora.FloraLongitude = float.Parse(form.Get("longitude"));
-                //flora.FloraLatitude = float.Parse(form.Get("latitude"));
+                flora.FloraLongitude = float.Parse(form.Get("longitude"));
+                flora.FloraLatitude = float.Parse(form.Get("latitude"));
                 flora.FloraOtherDescription = form.Get("description");
                 flora.FloraDiscoverer = form.Get("discoverer");
                 flora.FloraPhoto = form.Get("photolink");
@@ -220,7 +224,7 @@ namespace Planesia.Controllers
                 {
                     Response.Redirect("ErrorPage");
                 }
-                return View();
+                return View("Index");
             }
             else
             {
