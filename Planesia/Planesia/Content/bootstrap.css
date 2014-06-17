@@ -5650,13 +5650,13 @@ body.modal-open,
 
 .modal-content {
   position: relative;
-  background-color: #ffffff;
-  border: 1px solid #999999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  outline: none;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-color: rgb(139, 242, 104);
+  border: 10px solid rgb(4, 31, 134);
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  outline: 13px;
+  -webkit-box-shadow: 0 3px 9px rgb(157, 224, 154);
+          box-shadow: 0 3px 9px rgb(102, 250, 73);
   background-clip: padding-box;
 }
 
@@ -5667,7 +5667,7 @@ body.modal-open,
   bottom: 0;
   left: 0;
   z-index: 0;
-  background-color: #000000;
+  background-color: rgb(165, 11, 11);
 }
 
 .modal-backdrop.fade {
