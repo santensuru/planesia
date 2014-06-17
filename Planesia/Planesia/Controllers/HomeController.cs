@@ -185,7 +185,7 @@ namespace Planesia.Controllers
                 fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
                 fauna.FaunaOtherDescription = form.Get("description");
                 fauna.FaunaReference = form.Get("reference");
-                //fauna.FaunaPhoto = form.Get("photolink");
+                fauna.FaunaPhoto = form.Get("photolink");
                 fauna.FaunaDate = DateTime.Now;
                 fauna.UserId = int.Parse(Session["UserId"].ToString());
                 fns.AddFauna(fauna);
@@ -209,7 +209,7 @@ namespace Planesia.Controllers
                 flora.FloraLatitude = float.Parse(form.Get("latitude"));
                 flora.FloraOtherDescription = form.Get("description");
                 flora.FloraReference = form.Get("reference");
-                //flora.FloraPhoto = form.Get("photolink");
+                flora.FloraPhoto = form.Get("photolink");
                 flora.FloraDate = DateTime.Now;
                 flora.UserId = int.Parse(Session["UserId"].ToString());
                 fls.AddFlora(flora);
