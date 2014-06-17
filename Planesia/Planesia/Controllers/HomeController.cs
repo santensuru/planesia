@@ -20,7 +20,8 @@ namespace Planesia.Controllers
         UserService us = new UserService();
         FloraService fls = new FloraService();
         FaunaService fns = new FaunaService();
-        
+       
+
         public ActionResult Index()
         {
             ViewBag.Faunas = fns.GetAllFaunas();
@@ -44,8 +45,7 @@ namespace Planesia.Controllers
         }
 
         public ActionResult Campaign()
-        {
-            //return View(db.Campaigns.ToList());
+        {            
             return View(cs.GetAllCampaigns());
         }
 
