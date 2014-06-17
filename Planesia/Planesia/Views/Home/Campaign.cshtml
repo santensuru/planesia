@@ -6,27 +6,15 @@
 
 <body style="padding-top: 70px; color:black;">
     <p>    Create Your Campaign  @Html.ActionLink("Here", "CreateCampaign")        </p>
-    <table class="table">
-
-
-        <table class="table">
-
-            @try
-            {
-                foreach (var item in Model)
+                @foreach (var item in Model)
                 {
-                    <tr>
-                        <img width="400px" height="400px" src="
-                             @Html.DisplayFor(modelItem => item.CampaignDescription)
-                             ">
-                    </tr>
+                    <div class="col-md-4">
+                        <div>
+                            <img width="400px" height="400px" src="
+                                 @Html.DisplayFor(modelItem => item.CampaignDescription)
+                                 ">
+                        </div>
+                        <div>@Html.DisplayFor(model => item.CampaignDate)</div>
+                    </div>
                 }
-
-            }
-            catch (Exception e)
-            {
-                <tr><td colspan="4">@e.Message</td></tr>
-            }
-
-        </table>
 </body>

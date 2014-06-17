@@ -213,6 +213,7 @@
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CampaignHelper.cs" />
+    <Compile Include="Models\DataCampaign.cs" />
     <Compile Include="Models\Fauna.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
