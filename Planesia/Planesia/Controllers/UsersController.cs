@@ -152,7 +152,7 @@ namespace Planesia.Controllers
 
                     us.UpdateUser(user);
 
-                    return RedirectToAction("Profile", "Home");
+                    return RedirectToAction("Details");
                 }
                 return View(user);
             }
