@@ -11,10 +11,10 @@
     <div class="form-horizontal">
         <h4>Campaign</h4>
         <hr />
-        @Html.ValidationSummary(true)
+            @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CampaignName, new { @class = "control-label col-md-2" })
+             @Html.LabelFor(model => model.CampaignName, new { @class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CampaignName)
                 @Html.ValidationMessageFor(model => model.CampaignName)
@@ -22,18 +22,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CampaignDescription, new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="CampaignName">Campaign Link Photo</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CampaignDescription)
                 @Html.ValidationMessageFor(model => model.CampaignDescription)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampaignDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CampaignDate)
-                @Html.ValidationMessageFor(model => model.CampaignDate)
             </div>
         </div>
 

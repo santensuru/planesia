@@ -11,10 +11,10 @@
           </Key>
           <Property Name="CampaignId" Type="int" Nullable="false" />
           <Property Name="CampaignName" Type="varchar" MaxLength="50" />
-          <Property Name="CampaignDescription" Type="varchar" MaxLength="50" />
           <Property Name="CampaignDate" Type="date" />
           <Property Name="UserId" Type="int" />
           <Property Name="CampaignStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CampaignDescription" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Faunas">
           <Key>
@@ -24,9 +24,9 @@
           <Property Name="FaunaName" Type="varchar" MaxLength="50" />
           <Property Name="FaunaLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FaunaDate" Type="date" />
-          <Property Name="FaunaReference" Type="varchar" MaxLength="50" />
-          <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="50" />
-          <Property Name="FaunaPhoto" Type="varchar" MaxLength="50" />
+          <Property Name="FaunaReference" Type="varchar" MaxLength="250" />
+          <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="500" />
+          <Property Name="FaunaPhoto" Type="varchar" MaxLength="500" />
           <Property Name="UserId" Type="int" />
           <Property Name="FaunaStatus" Type="varchar" MaxLength="50" />
           <Property Name="FaunaLongitude" Type="float" />
@@ -41,9 +41,9 @@
           <Property Name="FloraName" Type="varchar" MaxLength="50" />
           <Property Name="FloraLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FloraDate" Type="date" />
-          <Property Name="FloraReference" Type="varchar" MaxLength="50" />
-          <Property Name="FloraOtherDescription" Type="varchar" MaxLength="50" />
-          <Property Name="FloraPhoto" Type="varchar" MaxLength="50" />
+          <Property Name="FloraReference" Type="varchar" MaxLength="250" />
+          <Property Name="FloraOtherDescription" Type="varchar" MaxLength="500" />
+          <Property Name="FloraPhoto" Type="varchar" MaxLength="500" />
           <Property Name="UserId" Type="int" />
           <Property Name="FloraStatus" Type="varchar" MaxLength="50" />
           <Property Name="FloraLongitude" Type="float" />
@@ -131,11 +131,11 @@
           </Key>
           <Property Name="CampaignId" Type="Int32" Nullable="false" />
           <Property Name="CampaignName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CampaignDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CampaignDate" Type="DateTime" Precision="0" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="CampaignStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_CampaignUser" FromRole="Campaign" ToRole="User" />
+          <Property Name="CampaignDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Fauna">
           <Key>
@@ -145,14 +145,14 @@
           <Property Name="FaunaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaDate" Type="DateTime" Precision="0" />
-          <Property Name="FaunaOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FaunaPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaOtherDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="FaunaStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FaunaUser" FromRole="Fauna" ToRole="User" />
           <Property Name="FaunaLongitude" Type="Double" />
           <Property Name="FaunaLatitude" Type="Double" />
-          <Property Name="FaunaReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaReference" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="KomentarFauna" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Flora">
@@ -163,15 +163,15 @@
           <Property Name="FloraName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraDate" Type="DateTime" Precision="0" />
-          <Property Name="FloraOtherDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FloraPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraOtherDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FloraPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="FloraStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
           <Property Name="FloraLongitude" Type="Double" />
           <Property Name="FloraLatitude" Type="Double" />
           <Property Name="KomentarFlora" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
-          <Property Name="FloraReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloraReference" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -256,9 +256,9 @@
     <EntitySetMapping Name="Campaigns">
       <EntityTypeMapping TypeName="IsTypeOf(PlanesiaDBsModel.Campaign)">
         <MappingFragment StoreEntitySet="Campaigns">
-          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
-          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
           <ScalarProperty Name="CampaignDescription" ColumnName="CampaignDescription" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
           <ScalarProperty Name="CampaignDate" ColumnName="CampaignDate" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="CampaignStatus" ColumnName="CampaignStatus" />

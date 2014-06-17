@@ -27,54 +27,53 @@
 
             @foreach(var item in ViewBag.Faunas)
                 {
-                    <text>
-            var latitude = @item.FaunaLatitude;
-            var longitude = @item.FaunaLongitude;
-            var image = '@item.FaunaPhoto';
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(latitude , longitude),
-                map: map,
-                // icon : image
-            });
-            var contentString =
+                <text>
+                var latitude = @item.FaunaLatitude;
+                var longitude = @item.FaunaLongitude;
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(latitude , longitude),
+                    map: map,
+                    icon : 'http://i1297.photobucket.com/albums/ag35/Tsaqova/leopard_zps7af25687.png'
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                var contentString =
                 '<h6>@item.FaunaName</h6>'+
                 '<p>@item.FaunaOtherDescription</p>' +
+                '<img src="@item.FaunaPhoto" height="100" width="150"/><br>' +
                 '<a href="@item.FaunaReference" target="_blank">Referensi</a>';
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
                 infowindow.open(map, this);
             });
             </text>
                 }
             @foreach(var item in ViewBag.Floras)
                 {
-                    <text>
+            <text>
             var latitude = @item.FloraLatitude;
             var longitude = @item.FloraLongitude;
-            var image = '@item.FloraPhoto';
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(latitude , longitude),
                 map: map,
-
-            });
-
-            var contentString = '<b><h6>@item.FloraName</h6></b>'+
-                '<p>@item.FloraOtherDescription</p>' +
-                '<a href="@item.FloraReference" target="_blank">Referensi</a>';
-
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
+                icon: 'http://i1297.photobucket.com/albums/ag35/Tsaqova/icon_zps1b0434d2.png'
             });
 
             google.maps.event.addListener(marker, 'click', function() {
+                var contentString = '<b><h6>@item.FloraName</h6></b>'+
+                '<p>@item.FloraOtherDescription</p>' +
+                '<img src="@item.FloraPhoto" height="100" width="150"/><br>' +
+                '<a href="@item.FloraReference" target="_blank">Referensi</a>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
                 infowindow.open(map, this);
             });
             </text>
-                }
+            }
         }
     });
 
@@ -140,24 +139,6 @@
                         <label>
                             <input type="checkbox" value="">
                             Fauna
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Extinct
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Endangered
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Safe
                         </label>
                     </div>
                 </form>
@@ -244,6 +225,7 @@
 </div>
     @*Galeri Foto Kodingan stop here
         @*Kodingan Google Maps start here*@
+    <h2 class="text-center">Maps</h2>
     <div style="padding-bottom: 25px; height:100%;">
         <center style="height:100%;">
             <div id="map-canvas" style="height:500px; width:80%;"></div>

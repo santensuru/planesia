@@ -16,10 +16,10 @@ namespace Planesia.Models
     {
         public int CampaignId { get; set; }
         public string CampaignName { get; set; }
-        public string CampaignDescription { get; set; }
         public Nullable<System.DateTime> CampaignDate { get; set; }
         public Nullable<int> UserId { get; set; }
         public string CampaignStatus { get; set; }
+        public string CampaignDescription { get; set; }
     
         public virtual User User { get; set; }
     }

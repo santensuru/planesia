@@ -25,7 +25,7 @@
                         <li><a href="/Users/Create">Register</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
                     } else if (Session["UserName"] != null) {
-                        <li><a href="/Home/Profile"><span>@Session["Username"] Profile</span></a></li>
+                        <li><a href="/Users/Details"><span>@Session["Username"] Profile</span></a></li>
                         <li><a href="/Home/Logout"><span>Logout</span></a></li>
                     }
 
@@ -48,6 +48,8 @@
                                         </div>
                                         <button type="submit" class="btn btn-default">Log in</button>
                                     </form>
+                                    <br />
+                                    <br />
                                 </div>
 
                                 <div class="modal-footer">

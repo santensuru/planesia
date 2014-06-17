@@ -3,55 +3,30 @@
 @{
     ViewBag.Title = "Campaign";
 }
- 
-<table class="table">
-    <tr>
-        <th>
-            Campaign Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            By
-        </th>
-    </tr>
 
-    @try
-    {
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CampaignName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CampaignDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CampaignDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.CampaignId }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.CampaignId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.CampaignId })
-                    </td>*@
-            </tr>
-        }
+<body style="padding-top: 70px; color:black;">
+    <p>    Create Your Campaign  @Html.ActionLink("Here", "CreateCampaign")        </p>
+    <table class="table">
 
-    }
-    catch (Exception e)
-    {
-        <tr><td colspan="4">@e.Message</td></tr>
-    }
 
-</table>
-@if (Session["UserName"] != null) {
-<p>    Create Your Campaign  @Html.ActionLink("Here", "CreateCampaign")        </p>
-}
+        <table class="table">
+
+            @try
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <img width="400px" height="400px" src="
+                             @Html.DisplayFor(modelItem => item.CampaignDescription)
+                             ">
+                    </tr>
+                }
+
+            }
+            catch (Exception e)
+            {
+                <tr><td colspan="4">@e.Message</td></tr>
+            }
+
+        </table>
+</body>
