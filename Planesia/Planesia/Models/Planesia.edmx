@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PlanesiaDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PlanesiaDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Campaigns">
           <Key>
             <PropertyRef Name="CampaignId" />
@@ -25,8 +25,8 @@
           <Property Name="FaunaLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FaunaDate" Type="date" />
           <Property Name="FaunaReference" Type="varchar" MaxLength="250" />
-          <Property Name="FaunaOtherDescription" Type="varchar" MaxLength="500" />
-          <Property Name="FaunaPhoto" Type="varchar" MaxLength="500" />
+          <Property Name="FaunaOtherDescription" Type="nvarchar(max)" />
+          <Property Name="FaunaPhoto" Type="nvarchar(max)" />
           <Property Name="UserId" Type="int" />
           <Property Name="FaunaStatus" Type="varchar" MaxLength="50" />
           <Property Name="FaunaLongitude" Type="float" />
@@ -42,8 +42,8 @@
           <Property Name="FloraLatinName" Type="varchar" MaxLength="50" />
           <Property Name="FloraDate" Type="date" />
           <Property Name="FloraReference" Type="varchar" MaxLength="250" />
-          <Property Name="FloraOtherDescription" Type="varchar" MaxLength="500" />
-          <Property Name="FloraPhoto" Type="varchar" MaxLength="500" />
+          <Property Name="FloraOtherDescription" Type="nvarchar(max)" />
+          <Property Name="FloraPhoto" Type="nvarchar(max)" />
           <Property Name="UserId" Type="int" />
           <Property Name="FloraStatus" Type="varchar" MaxLength="50" />
           <Property Name="FloraLongitude" Type="float" />
@@ -145,8 +145,8 @@
           <Property Name="FaunaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaunaDate" Type="DateTime" Precision="0" />
-          <Property Name="FaunaOtherDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="FaunaPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FaunaOtherDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FaunaPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="FaunaStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FaunaUser" FromRole="Fauna" ToRole="User" />
@@ -163,8 +163,8 @@
           <Property Name="FloraName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraLatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FloraDate" Type="DateTime" Precision="0" />
-          <Property Name="FloraOtherDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="FloraPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FloraOtherDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FloraPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="FloraStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FloraUser" FromRole="Flora" ToRole="User" />
