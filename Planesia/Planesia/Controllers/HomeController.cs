@@ -8,7 +8,9 @@ using PagedList.Mvc;
 using Planesia.Models;
 using Planesia.Service;
 using Planesia.Repository;
-
+using System.Data.Entity.Validation;
+using System.Diagnostics;
+    
 namespace Planesia.Controllers
 {
     public class HomeController : Controller
@@ -183,20 +185,10 @@ namespace Planesia.Controllers
                 fauna.FaunaLatitude = float.Parse(form.Get("latitude"));
                 fauna.FaunaOtherDescription = form.Get("description");
                 fauna.FaunaReference = form.Get("reference");
-                fauna.FaunaPhoto = form.Get("photolink");
+                //fauna.FaunaPhoto = form.Get("photolink");
                 fauna.FaunaDate = DateTime.Now;
                 fauna.UserId = int.Parse(Session["UserId"].ToString());
-                try
-                {
-                    fns.AddFauna(fauna);
-                    //db.Faunas.Add(fauna);
-                    //db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert(" + ex.Message + ")</script>");
-                    Response.Redirect("Error");
-                }
+                fns.AddFauna(fauna);
                 return View();
             }
             else
@@ -217,20 +209,10 @@ namespace Planesia.Controllers
                 flora.FloraLatitude = float.Parse(form.Get("latitude"));
                 flora.FloraOtherDescription = form.Get("description");
                 flora.FloraReference = form.Get("reference");
-                flora.FloraPhoto = form.Get("photolink");
+                //flora.FloraPhoto = form.Get("photolink");
                 flora.FloraDate = DateTime.Now;
                 flora.UserId = int.Parse(Session["UserId"].ToString());
-                try
-                {
-                    fls.AddFlora(flora);
-                    //db.Faunas.Add(fauna);
-                    //db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert(" + ex.Message + ")</script>");
-                    Response.Redirect("Error");
-                }
+                fls.AddFlora(flora);
                 return View();
             }
             else
