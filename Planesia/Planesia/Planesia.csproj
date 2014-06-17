@@ -204,6 +204,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\List.cs" />
     <Compile Include="Controllers\Pagination.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +214,7 @@
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CampaignHelper.cs" />
+    <Compile Include="Models\DataCampaign.cs" />
     <Compile Include="Models\Fauna.cs">
       <DependentUpon>Planesia.tt</DependentUpon>
     </Compile>
